@@ -65,11 +65,12 @@ public class Building implements DatabaseSavable<BuildingDatabase> {
 	public ContentValues getQuery(BuildingDatabase db) {
 		String[] array = db.getColumnArray();
 		ContentValues values = new ContentValues(5);
-		values.put(array[0], getId());
-		values.put(array[1], getDescription());
-		values.put(array[2], getCo2());
-		values.put(array[3], getTreasury());
-		values.put(array[4], isEco());
+		// no id pass
+		values.put(array[1], getName());
+		values.put(array[2], getDescription());
+		values.put(array[3], getCo2());
+		values.put(array[4], getTreasury());
+		values.put(array[5], isEco());
 		return values;
 	}
 }
