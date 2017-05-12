@@ -11,9 +11,8 @@ public class QuestionDatabase extends Database {
 	private static final String ID = "id";
 	private static final String NAME = "name";
 	private static final String DESCRIPTION = "description";
-	private static final String RESOURCE_CARBON = "resource_carbon_id";
-	private static final String RESOURCE_MONEY = "resource_money_id";
-	private static final String RESOURCE_POPULATION = "resource_population_id";
+	private static final String RESOURCE_ACCEPT = "resource_accept";
+	private static final String RESOURCE_REJECT = "resource_reject";
 	
 	public QuestionDatabase(Context context) {
 		super(context);
@@ -26,7 +25,7 @@ public class QuestionDatabase extends Database {
 	
 	@Override
 	public String[] getColumnArray() {
-		return new String[]{ID, NAME, DESCRIPTION, RESOURCE_CARBON, RESOURCE_MONEY, RESOURCE_POPULATION};
+		return new String[]{ID, NAME, DESCRIPTION, RESOURCE_ACCEPT, RESOURCE_REJECT};
 	}
 	
 	@Override
@@ -37,16 +36,13 @@ public class QuestionDatabase extends Database {
 				                         "%s TEXT, " +
 				                         "%s INTEGER, " +
 				                         "%s INTEGER, " +
-				                         "%s INTEGER, " +
-				                         "FOREIGN KEY(%s) REFERENCES %s(%s)" +
 				                         "FOREIGN KEY(%s) REFERENCES %s(%s)" +
 				                         "FOREIGN KEY(%s) REFERENCES %s(%s))",
 				                         getTableName(),
 										 ID, NAME, DESCRIPTION,
-										 RESOURCE_CARBON, RESOURCE_MONEY, RESOURCE_POPULATION,
-										 RESOURCE_CARBON, "Carbon", "id",
-										 RESOURCE_MONEY, "Money", "id",
-										 RESOURCE_POPULATION, "Population", "id"
+										 RESOURCE_ACCEPT, RESOURCE_REJECT,
+										 RESOURCE_ACCEPT, "resource", "id",
+										 RESOURCE_REJECT, "resource", "id"
 		));
 	}
 }
