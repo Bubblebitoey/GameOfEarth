@@ -1,6 +1,7 @@
 package com.bubblebitoey.gameofearth.model.database;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import com.bubblebitoey.gameofearth.model.DatabaseSavable;
@@ -26,7 +27,18 @@ public abstract class Database<T extends DatabaseSavable> extends SQLiteOpenHelp
 	}
 	
 	public long add(T data) {
-		return getReadableDatabase().insert(getTableName(), null, data.getInsertQuery(this));
+		return getWritableDatabase().insert(getTableName(), null, data.getInsertQuery(this));
+	}
+	
+	public Long getID(String cause, String[] causeArgs) {
+		Cursor cursor = getReadableDatabase().query(getTableName(), new String[]{"id"}, cause, causeArgs, null, null, null);
+		long resultID = cursor.getLong(0);
+		cursor.close();
+		return resultID;
+	}
+	
+	public Cursor getData(long id) {
+		return getReadableDatabase().query(getTableName(), null, "id=?", new String[]{String.valueOf(id)}, null, null, null);
 	}
 	
 	public abstract String getTableName();
