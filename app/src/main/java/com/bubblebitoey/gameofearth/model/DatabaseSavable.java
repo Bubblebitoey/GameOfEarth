@@ -8,5 +8,5 @@ import com.bubblebitoey.gameofearth.model.database.Database;
  */
 
 public interface DatabaseSavable<T extends Database> {
-	ContentValues getQuery(T db);
+	ContentValues getInsertQuery(T db);
 }

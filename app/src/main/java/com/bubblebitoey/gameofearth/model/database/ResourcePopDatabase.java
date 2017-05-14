@@ -1,18 +1,17 @@
 package com.bubblebitoey.gameofearth.model.database;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
+import com.bubblebitoey.gameofearth.api.constants.Value;
+import com.bubblebitoey.gameofearth.model.Resource;
+import com.bubblebitoey.gameofearth.model.creator.Creator;
 
 /**
  * Created by bubblebitoey on 5/12/2017 AD.
  */
 
-public class ResourcePopDatabase extends Database {
-	private static final String ID = "id";
-	private static final String VALUE = "value";
-	
-	public ResourcePopDatabase(Context context) {
-		super(context);
+public class ResourcePopDatabase extends ResourceTypeDatabase {
+	public ResourcePopDatabase(Context context, Creator<Resource.ResourceValue> creator) {
+		super(context, creator);
 	}
 	
 	@Override
@@ -21,12 +20,7 @@ public class ResourcePopDatabase extends Database {
 	}
 	
 	@Override
-	public String[] getColumnArray() {
-		return new String[]{ID, VALUE};
-	}
-	
-	@Override
-	public void onCreate(SQLiteDatabase db) {
-		db.execSQL(String.format("CREATE TABLE %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, " + "%s INTEGER)", getTableName(), ID, VALUE));
+	public Value getType() {
+		return Value.POPULATION;
 	}
 }

@@ -2,12 +2,14 @@ package com.bubblebitoey.gameofearth.model.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import com.bubblebitoey.gameofearth.model.Building;
+import com.bubblebitoey.gameofearth.model.creator.Creator;
 
 /**
  * Created by bubblebitoey on 5/12/2017 AD.
  */
 
-public class BuildingDatabase extends Database {
+public class BuildingDatabase extends Database<Building> {
 	private static final String ID = "id";
 	private static final String NAME = "name";
 	private static final String DESCRIPTION = "description";
@@ -15,8 +17,8 @@ public class BuildingDatabase extends Database {
 	private static final String TREASURY = "treasury";
 	private static final String ECO = "eco";
 	
-	public BuildingDatabase(Context context) {
-		super(context);
+	public BuildingDatabase(Context context, Creator<Building> creator) {
+		super(context, creator);
 	}
 	
 	@Override

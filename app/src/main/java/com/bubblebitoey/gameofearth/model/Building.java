@@ -62,7 +62,7 @@ public class Building implements DatabaseSavable<BuildingDatabase> {
 	}
 	
 	@Override
-	public ContentValues getQuery(BuildingDatabase db) {
+	public ContentValues getInsertQuery(BuildingDatabase db) {
 		String[] array = db.getColumnArray();
 		ContentValues values = new ContentValues(5);
 		// no id pass
