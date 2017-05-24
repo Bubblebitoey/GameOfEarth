@@ -4,23 +4,29 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import com.softspec.finalproj.gameofearth.api.constants.TableName;
-import com.softspec.finalproj.gameofearth.model.DatabaseSavable;
+
+import java.io.File;
 
 public abstract class Database extends SQLiteOpenHelper {
 	// Database Version
-	private static final int DATABASE_VERSION = 3;
+	private static final int DATABASE_VERSION = 2;
 	// Database Name
 	private static final String DATABASE_NAME = "DataCollection";
 	
+	
+	private Context context;
+	
 	public Database(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		this.context = context;
 	}
 	
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		if (oldVersion != newVersion) {
-			db.execSQL("DROP TABLE IF EXISTS " + getTableName());
+			db.execSQL("DROP TABLE IF EXISTS " + getTableName().getName());
 			onCreate(db);
 		}
 	}
@@ -41,4 +47,10 @@ public abstract class Database extends SQLiteOpenHelper {
 	}
 	
 	public abstract TableName getTableName();
+	
+	public boolean isExist() {
+		File f = context.getDatabasePath(DATABASE_NAME);
+		Log.d("DATABASE PATH", f.getAbsolutePath());
+		return f.exists();
+	}
 }

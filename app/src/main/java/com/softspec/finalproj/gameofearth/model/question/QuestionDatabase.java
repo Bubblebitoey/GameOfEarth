@@ -1,9 +1,11 @@
-package com.softspec.finalproj.gameofearth.model.database;
+package com.softspec.finalproj.gameofearth.model.question;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import com.softspec.finalproj.gameofearth.api.constants.DatabaseColumns;
 import com.softspec.finalproj.gameofearth.api.constants.TableName;
+import com.softspec.finalproj.gameofearth.model.database.Database;
 
 /**
  * Created by bubblebitoey on 5/12/2017 AD.
@@ -25,6 +27,7 @@ public class QuestionDatabase extends Database {
 	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL(String.format("CREATE TABLE %s (" + "%s INTEGER PRIMARY KEY AUTOINCREMENT, " + "%s TEXT, " + "%s TEXT, ", getTableName(), ID, NAME, DESCRIPTION));
+		Log.d("CREATE", "QUESTION DATABASE");
+		db.execSQL(String.format("CREATE TABLE %s (" + "%s INTEGER PRIMARY KEY, " + "%s TEXT, " + "%s TEXT)", getTableName(), ID, NAME, DESCRIPTION));
 	}
 }

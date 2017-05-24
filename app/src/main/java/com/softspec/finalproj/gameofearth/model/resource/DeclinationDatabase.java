@@ -1,9 +1,11 @@
-package com.softspec.finalproj.gameofearth.model.database;
+package com.softspec.finalproj.gameofearth.model.resource;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import com.softspec.finalproj.gameofearth.api.constants.DatabaseColumns;
 import com.softspec.finalproj.gameofearth.api.constants.TableName;
+import com.softspec.finalproj.gameofearth.model.database.Database;
 
 /**
  * @author kamontat
@@ -26,12 +28,7 @@ public class DeclinationDatabase extends Database {
 	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL(String.format("CREATE TABLE %s (" +
-						                         "%s INTEGER, " +
-						                         "%s INTEGER, " +
-						                         "%s INTEGER, " +
-												 "FOREIGN KEY(%s) REFERENCES %s(%s)",
-						getTableName(), ID, D_C, D_P
-						, ID, TableName.QUESTION.getName(), DatabaseColumns.ID));
+		Log.d("CREATE", "DENY DATABASE");
+		db.execSQL(String.format("CREATE TABLE %s (" + "%s INTEGER, " + "%s INTEGER, " + "%s INTEGER, " + "FOREIGN KEY(%s) REFERENCES %s(%s))", getTableName(), ID, D_C, D_P, ID, TableName.QUESTION.getName(), DatabaseColumns.ID));
 	}
 }

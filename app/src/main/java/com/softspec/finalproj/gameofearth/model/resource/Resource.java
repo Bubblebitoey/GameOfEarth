@@ -1,8 +1,9 @@
-package com.softspec.finalproj.gameofearth.model;
+package com.softspec.finalproj.gameofearth.model.resource;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteOpenHelper;
 import com.softspec.finalproj.gameofearth.api.constants.DatabaseColumns;
+import com.softspec.finalproj.gameofearth.model.database.DatabaseSavable;
 
 /**
  * Created by bubblebitoey on 5/12/2017 AD.
@@ -42,7 +43,7 @@ public class Resource implements DatabaseSavable {
 		return values;
 	}
 	
-	static class Builder {
+	public static class Builder {
 		private SQLiteOpenHelper sql;
 		private long id;
 		private long co2;
@@ -73,6 +74,28 @@ public class Resource implements DatabaseSavable {
 			s.setCo2(co2);
 			s.setPop(pop);
 			return s;
+		}
+	}
+	
+	/**
+	 * for {@link Creator} only!
+	 */
+	static class Creator {
+		private long id;
+		private long co2;
+		private long pop;
+		
+		public Creator(long id, long co2, long pop) {
+			this.id = id;
+			this.co2 = co2;
+			this.pop = pop;
+		}
+		
+		public Resource create() {
+			Resource r = new Resource(id);
+			r.setCo2(co2);
+			r.setPop(pop);
+			return r;
 		}
 	}
 }

@@ -1,4 +1,4 @@
-package com.softspec.finalproj.gameofearth.model;
+package com.softspec.finalproj.gameofearth.model.database;
 
 import android.content.ContentValues;
 
