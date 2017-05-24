@@ -1,5 +1,6 @@
 package com.softspec.finalproj.gameofearth.model.question;
 
+import com.softspec.finalproj.gameofearth.api.constants.TableName;
 import com.softspec.finalproj.gameofearth.model.creator.Creator;
 import com.softspec.finalproj.gameofearth.model.database.Database;
 
@@ -33,9 +34,9 @@ public class QuestionCreator implements Creator<Question> {
 	}
 	
 	@Override
-	public void insert() {
+	public synchronized void insert() {
 		for (Question q : createList()) {
-			db.add(q);
+			db.add(TableName.QUESTION, q);
 		}
 	}
 }

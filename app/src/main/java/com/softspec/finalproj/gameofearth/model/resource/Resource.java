@@ -38,6 +38,7 @@ public class Resource implements DatabaseSavable {
 	public ContentValues getInsertQuery() {
 		ContentValues values = new ContentValues(2);
 		// no id pass
+		values.put(DatabaseColumns.ID.getDatabaseKey(), id);
 		values.put(DatabaseColumns.CO2.getDatabaseKey(), getCo2());
 		values.put(DatabaseColumns.POPULATION.getDatabaseKey(), getPop());
 		return values;

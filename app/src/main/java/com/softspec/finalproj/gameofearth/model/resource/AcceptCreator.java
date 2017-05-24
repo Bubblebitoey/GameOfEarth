@@ -1,5 +1,6 @@
 package com.softspec.finalproj.gameofearth.model.resource;
 
+import com.softspec.finalproj.gameofearth.api.constants.TableName;
 import com.softspec.finalproj.gameofearth.model.question.Question;
 import com.softspec.finalproj.gameofearth.model.creator.Creator;
 import com.softspec.finalproj.gameofearth.model.question.QuestionCreator;
@@ -25,11 +26,11 @@ public class AcceptCreator implements Creator<Resource> {
 	public List<Resource> createList() {
 		long id = Question.static_id;
 		if (list.isEmpty()) {
-			list.add(new Resource.Creator(0, 5, 12).create());
-			list.add(new Resource.Creator(1, 5, 12).create());
-			list.add(new Resource.Creator(2, 5, 12).create());
-			list.add(new Resource.Creator(3, 5, 12).create());
-			list.add(new Resource.Creator(4, 5, 12).create());
+			list.add(new Resource.Creator(0, 5, 3).create());
+			list.add(new Resource.Creator(1, 1, 5).create());
+			list.add(new Resource.Creator(2, 12, 11).create());
+			list.add(new Resource.Creator(3, 55, 23).create());
+			list.add(new Resource.Creator(4, 2, 40).create());
 		}
 		return list;
 	}
@@ -41,9 +42,9 @@ public class AcceptCreator implements Creator<Resource> {
 	}
 	
 	@Override
-	public void insert() {
+	public synchronized void insert() {
 		for (Resource r : createList()) {
-			database.add(r);
+			database.add(TableName.ACCEPTANCE, r);
 		}
 	}
 }

@@ -5,10 +5,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import com.softspec.finalproj.gameofearth.model.database.Database;
 import com.softspec.finalproj.gameofearth.model.question.QuestionCreator;
-import com.softspec.finalproj.gameofearth.model.question.QuestionDatabase;
 import com.softspec.finalproj.gameofearth.model.resource.AcceptCreator;
-import com.softspec.finalproj.gameofearth.model.resource.AcceptanceDatabase;
-import com.softspec.finalproj.gameofearth.model.resource.DeclinationDatabase;
+import com.softspec.finalproj.gameofearth.model.resource.DenyCreator;
 
 /**
  * @author kamontat
@@ -16,9 +14,7 @@ import com.softspec.finalproj.gameofearth.model.resource.DeclinationDatabase;
  * @since Thu 25/May/2017 - 12:20 AM
  */
 public class DatabaseManagement extends AsyncTask<Context, Void, Boolean> {
-	private Database qDB;
-	private Database aDB;
-	private Database dDB;
+	private Database database;
 	
 	public DatabaseManagement(Context c) {
 		execute(c);
@@ -27,9 +23,7 @@ public class DatabaseManagement extends AsyncTask<Context, Void, Boolean> {
 	@Override
 	protected Boolean doInBackground(Context... contexts) {
 		Context c = contexts[0];
-		qDB = new QuestionDatabase(c);
-		aDB = new AcceptanceDatabase(c);
-		dDB = new DeclinationDatabase(c);
+		database = new Database(c);
 		return true;
 	}
 	
@@ -37,16 +31,16 @@ public class DatabaseManagement extends AsyncTask<Context, Void, Boolean> {
 	protected void onPostExecute(Boolean aBoolean) {
 		super.onPostExecute(aBoolean);
 		if (aBoolean) {
-			if (qDB.isExist()) {
+			if (database.isExist()) {
 				Log.i("REJECT", "creating, database exist");
 				return;
 			}
 			
-			QuestionCreator qc = (QuestionCreator) new QuestionCreator().setDatabase(qDB);
+			QuestionCreator qc = (QuestionCreator) new QuestionCreator().setDatabase(database);
 			qc.insert();
 			
-			new AcceptCreator(qc).setDatabase(aDB).insert();
-			new AcceptCreator(qc).setDatabase(dDB).insert();
+			new AcceptCreator(qc).setDatabase(database).insert();
+			new DenyCreator(qc).setDatabase(database).insert();
 		}
 	}
 }

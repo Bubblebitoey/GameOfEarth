@@ -1,5 +1,6 @@
 package com.softspec.finalproj.gameofearth.model.resource;
 
+import com.softspec.finalproj.gameofearth.api.constants.TableName;
 import com.softspec.finalproj.gameofearth.model.creator.Creator;
 import com.softspec.finalproj.gameofearth.model.database.Database;
 import com.softspec.finalproj.gameofearth.model.question.Question;
@@ -41,9 +42,9 @@ public class DenyCreator implements Creator<Resource> {
 	}
 	
 	@Override
-	public void insert() {
+	public synchronized void insert() {
 		for (Resource r : createList()) {
-			database.add(r);
+			database.add(TableName.DECLINATION, r);
 		}
 	}
 }
