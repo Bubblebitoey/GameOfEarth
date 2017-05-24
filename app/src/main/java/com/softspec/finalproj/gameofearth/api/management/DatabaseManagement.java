@@ -36,11 +36,9 @@ public class DatabaseManagement extends AsyncTask<Context, Void, Boolean> {
 				return;
 			}
 			
-			QuestionCreator qc = (QuestionCreator) new QuestionCreator().setDatabase(database);
-			qc.insert();
-			
-			new AcceptCreator(qc).setDatabase(database).insert();
-			new DenyCreator(qc).setDatabase(database).insert();
+			new QuestionCreator().setDatabase(database).insert();
+			new AcceptCreator().setDatabase(database).insert();
+			new DenyCreator().setDatabase(database).insert();
 		}
 	}
 }

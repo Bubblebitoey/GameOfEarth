@@ -4,7 +4,6 @@ import com.softspec.finalproj.gameofearth.api.constants.TableName;
 import com.softspec.finalproj.gameofearth.model.creator.Creator;
 import com.softspec.finalproj.gameofearth.model.database.Database;
 import com.softspec.finalproj.gameofearth.model.question.Question;
-import com.softspec.finalproj.gameofearth.model.question.QuestionCreator;
 
 import java.util.*;
 
@@ -15,12 +14,7 @@ import java.util.*;
  */
 public class DenyCreator implements Creator<Resource> {
 	private static final List<Resource> list = new ArrayList<>();
-	private QuestionCreator questionCreator;
 	private Database database;
-	
-	public DenyCreator(QuestionCreator questionCreator) {
-		this.questionCreator = questionCreator;
-	}
 	
 	@Override
 	public List<Resource> createList() {
