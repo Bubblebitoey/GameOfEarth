@@ -1,32 +1,117 @@
 package com.softspec.finalproj.gameofearth.view;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.softspec.finalproj.gameofearth.R;
+import com.softspec.finalproj.gameofearth.api.constants.LogConstants;
+import com.softspec.finalproj.gameofearth.api.management.DatabaseManagement;
+import com.softspec.finalproj.gameofearth.api.uidialog.QuestionDialog;
+import com.softspec.finalproj.gameofearth.api.uidialog.ResultDialog;
 import com.softspec.finalproj.gameofearth.model.game.GameLogic;
+import com.softspec.finalproj.gameofearth.model.resource.Resource;
 import com.softspec.finalproj.gameofearth.model.strategy.DefaultCO2Strategy;
 import com.softspec.finalproj.gameofearth.model.strategy.DefaultCityStrategy;
 import com.softspec.finalproj.gameofearth.model.strategy.DefaultGameStrategy;
+import com.softspec.finalproj.gameofearth.model.strategy.DefaultPopulationStrategy;
 
 import java.util.*;
 
 public class MainActivity extends FullScreenActivity implements Observer {
 	private static GameLogic logic;
+	private ImageView city;
+	private TextView currentPopTextView;
+	private TextView popTextView;
+	private TextView co2TextView;
+	private TextView dateTextView;
+	
+	
+	private QuestionDialog questionDialog;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		logic = new GameLogic(this, new DefaultGameStrategy(), new DefaultCityStrategy(), new DefaultCO2Strategy());
+		city = (ImageView) findViewById(R.id.city);
+		
+		currentPopTextView = (TextView) findViewById(R.id.current_population_text);
+		popTextView = (TextView) findViewById(R.id.population_text);
+		co2TextView = (TextView) findViewById(R.id.carbon_text);
+		dateTextView = (TextView) findViewById(R.id.calendar_text);
+		
+		DatabaseManagement management = (DatabaseManagement) getIntent().getSerializableExtra(LoadedProgressActivity.DATABASE_MANAGEMENT);
+		logic = new GameLogic(this, management.reload(this), new DefaultGameStrategy(), new DefaultCityStrategy(), new DefaultCO2Strategy(), new DefaultPopulationStrategy());
 		logic.addObserver(this);
 		logic.startGame();
+		
+		questionDialog = QuestionDialog.getInstance(this, this);
 	}
 	
 	@Override
 	public void update(Observable observable, Object o) {
 		if (observable instanceof GameLogic) {
-			logic.getCity();
-			// TODO: 5/25/2017 AD do something
+			if (logic.isGameOver()) {
+				Log.i(LogConstants.Action.NO_UPDATE, "Game Over");
+				setCity(logic.getDefaultCity());
+				logic.stopGame();
+			} else if (o instanceof String && o.toString().equals(GameLogic.SHOW_QUESTION)) {
+				showQuestion();
+			} else {
+				Log.i(LogConstants.Action.UPDATE, "City Image");
+				setCity(logic.getCity());
+			}
 		}
+		
+		if (observable instanceof ResultDialog && o instanceof Resource) {
+			Resource r = (Resource) o;
+			logic.update(r);
+		}
+		
+		update();
+	}
+	
+	public void update() {
+		setCurrentPopulation();
+		setPercentPopulation();
+		setCO2();
+		setDate();
+	}
+	
+	public void setCity(Drawable city) {
+		this.city.setImageDrawable(city);
+	}
+	
+	public void setCurrentPopulation() {
+		currentPopTextView.setText(String.valueOf(logic.getCurrentPopulation()));
+	}
+	
+	public void setPercentPopulation() {
+		popTextView.setText(String.format(Locale.ENGLISH, "%d%%", logic.getPopulation().getNumber()));
+	}
+	
+	public void setCO2() {
+		co2TextView.setText(String.valueOf(logic.getCo2()));
+	}
+	
+	public void setDate() {
+		dateTextView.setText(String.format(Locale.ENGLISH, "Day: %d", logic.getDate()));
+	}
+	
+	public void showQuestion() {
+		runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				if (!questionDialog.isShown()) {
+					Log.i(LogConstants.Action.NO_SHOW, LogConstants.Object.QUESTION_DIALOG);
+					questionDialog = QuestionDialog.getInstance(MainActivity.this, MainActivity.this).setQuestion(logic.randomQuestion());
+					questionDialog.show();
+				} else {
+					Log.i(LogConstants.Action.SHOW, LogConstants.Object.QUESTION_DIALOG);
+				}
+			}
+		});
 	}
 }

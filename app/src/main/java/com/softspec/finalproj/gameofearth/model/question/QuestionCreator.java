@@ -23,6 +23,11 @@ public class QuestionCreator implements Creator<Question> {
 			list.add(new Question("test question 3", "this is test question 3"));
 			list.add(new Question("test question 4", "this is test question 4"));
 			list.add(new Question("test question 5", "this is test question 5"));
+			list.add(new Question("test question 6", "this is test question 6"));
+			list.add(new Question("test question 7", "this is test question 7"));
+			list.add(new Question("test question 8", "this is test question 8"));
+			list.add(new Question("test question 9", "this is test question 9"));
+			list.add(new Question("test question 10", "this is test question 10"));
 		}
 		return list;
 	}
