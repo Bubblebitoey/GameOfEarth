@@ -8,6 +8,7 @@ import com.softspec.finalproj.gameofearth.api.datastructure.Percent;
 import com.softspec.finalproj.gameofearth.api.management.DatabaseManagement;
 import com.softspec.finalproj.gameofearth.api.management.ImageManagement;
 import com.softspec.finalproj.gameofearth.model.question.Question;
+import com.softspec.finalproj.gameofearth.model.resource.Resource;
 import com.softspec.finalproj.gameofearth.model.strategy.CO2Strategy;
 import com.softspec.finalproj.gameofearth.model.strategy.CityStrategy;
 import com.softspec.finalproj.gameofearth.model.strategy.GameStrategy;
@@ -118,6 +119,16 @@ public class GameLogic extends Observable implements Serializable {
 	
 	public void updateCO2(long add) {
 		co2 += add;
+	}
+	
+	public void update(Resource r) {
+		Percent pop = new Percent(r.getPop());
+		long co2 = r.getCo2();
+		
+		addPopulation(pop);
+		updateCO2(co2);
+		
+		Log.i(LogConstants.Action.UPDATE, "population: " + population + ", co2: " + co2);
 	}
 	
 	public Drawable getCity() {

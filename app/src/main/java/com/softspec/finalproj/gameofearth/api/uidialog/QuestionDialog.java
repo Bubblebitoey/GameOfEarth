@@ -76,7 +76,7 @@ public class QuestionDialog implements Showable {
 	}
 	
 	private void setDescription() {
-		builder.title(q.getDescription());
+		builder.content(q.getDescription());
 	}
 	
 	private void setBtnText() {

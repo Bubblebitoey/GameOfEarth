@@ -8,7 +8,9 @@ import com.softspec.finalproj.gameofearth.R;
 import com.softspec.finalproj.gameofearth.api.constants.LogConstants;
 import com.softspec.finalproj.gameofearth.api.management.DatabaseManagement;
 import com.softspec.finalproj.gameofearth.api.uidialog.QuestionDialog;
+import com.softspec.finalproj.gameofearth.api.uidialog.ResultDialog;
 import com.softspec.finalproj.gameofearth.model.game.GameLogic;
+import com.softspec.finalproj.gameofearth.model.resource.Resource;
 import com.softspec.finalproj.gameofearth.model.strategy.DefaultCO2Strategy;
 import com.softspec.finalproj.gameofearth.model.strategy.DefaultCityStrategy;
 import com.softspec.finalproj.gameofearth.model.strategy.DefaultGameStrategy;
@@ -50,6 +52,11 @@ public class MainActivity extends FullScreenActivity implements Observer {
 				Log.i(LogConstants.Action.UPDATE, "City Image");
 				setCity(logic.getCity());
 			}
+		}
+		
+		if (observable instanceof ResultDialog && o instanceof Resource) {
+			Resource r = (Resource) o;
+			logic.update(r);
 		}
 	}
 	
