@@ -10,6 +10,8 @@ import java.util.*;
  * @since Thu 25/May/2017 - 5:37 PM
  */
 public class DefaultGameStrategy implements GameStrategy {
+	public static long serialVersionUID = 1L;
+	
 	@Override
 	public long getDefaultCO2() {
 		return 500;
