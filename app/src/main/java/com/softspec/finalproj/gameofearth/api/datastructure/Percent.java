@@ -14,6 +14,6 @@ public class Percent {
 	}
 	
 	public double percent() {
-		return number / 100;
+		return number / 100.0;
 	}
 }
