@@ -6,11 +6,15 @@ import android.view.Window;
 import android.view.WindowManager;
 import com.softspec.finalproj.gameofearth.R;
 import com.softspec.finalproj.gameofearth.api.management.DatabaseManagement;
-import com.softspec.finalproj.gameofearth.model.question.Question;
+import com.softspec.finalproj.gameofearth.model.game.GameLogic;
+import com.softspec.finalproj.gameofearth.model.strategy.DefaultCO2Strategy;
+import com.softspec.finalproj.gameofearth.model.strategy.DefaultCityStrategy;
+import com.softspec.finalproj.gameofearth.model.strategy.DefaultGameStrategy;
 
 import java.util.*;
 
 public class MainActivity extends Activity implements Observer {
+	private static GameLogic logic;
 	private static DatabaseManagement management;
 	
 	@Override
@@ -28,8 +32,11 @@ public class MainActivity extends Activity implements Observer {
 	@Override
 	public void update(Observable observable, Object o) {
 		if (observable instanceof DatabaseManagement) {
-			Question q = management.randomQuestion();
-			System.out.println(q.toString());
+			logic = new GameLogic(this, new DefaultGameStrategy(), new DefaultCityStrategy(), new DefaultCO2Strategy());
+			logic.addObserver(this);
+			logic.startGame();
+		} else if (observable instanceof GameLogic) {
+			// TODO: 5/25/2017 AD update game information
 		}
 	}
 }
