@@ -37,9 +37,13 @@ public class ResultDialog extends Observable implements Showable {
 	public ResultDialog setResource(Resource r, TableName type) {
 		this.r = r;
 		
+		builder = new MaterialDialog.Builder(builder.getContext());
+		
 		setTitle(type);
 		setList();
 		setBtn();
+		
+		build();
 		
 		return this;
 	}

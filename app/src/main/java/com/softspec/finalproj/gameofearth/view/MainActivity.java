@@ -75,7 +75,7 @@ public class MainActivity extends FullScreenActivity implements Observer {
 			public void run() {
 				if (!questionDialog.isShown()) {
 					Log.i(LogConstants.Action.NO_SHOW, LogConstants.Object.QUESTION_DIALOG);
-					questionDialog = QuestionDialog.getInstance(logic.randomQuestion());
+					questionDialog = QuestionDialog.getInstance(MainActivity.this, MainActivity.this).setQuestion(logic.randomQuestion());
 					questionDialog.show();
 				} else {
 					Log.i(LogConstants.Action.SHOW, LogConstants.Object.QUESTION_DIALOG);

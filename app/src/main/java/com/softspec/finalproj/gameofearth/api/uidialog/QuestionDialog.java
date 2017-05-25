@@ -29,7 +29,7 @@ public class QuestionDialog implements Showable {
 	private MaterialDialog.SingleButtonCallback positiveOnClick = new MaterialDialog.SingleButtonCallback() {
 		@Override
 		public void onClick(@NonNull MaterialDialog materialDialog, @NonNull DialogAction dialogAction) {
-			acceptResultDialog.setResource(q.getAccept(), TableName.ACCEPTANCE).build();
+			acceptResultDialog.setResource(q.getAccept(), TableName.ACCEPTANCE);
 			acceptResultDialog.show();
 		}
 	};
@@ -37,7 +37,7 @@ public class QuestionDialog implements Showable {
 	private MaterialDialog.SingleButtonCallback negativeOnClick = new MaterialDialog.SingleButtonCallback() {
 		@Override
 		public void onClick(@NonNull MaterialDialog materialDialog, @NonNull DialogAction dialogAction) {
-			denyResultDialog.setResource(q.getDeny(), TableName.DECLINATION).build();
+			denyResultDialog.setResource(q.getDeny(), TableName.DECLINATION);
 			denyResultDialog.show();
 		}
 	};
