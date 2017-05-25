@@ -12,7 +12,7 @@ import java.util.*;
  * @since Sun 14/May/2017 - 9:23 PM
  */
 public interface Creator<D extends DatabaseSavable> {
-	List<D> createList();
+	Creator setList(List<D> list);
 	
 	Creator setDatabase(Database database);
 	

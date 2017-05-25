@@ -12,24 +12,13 @@ import java.util.*;
  * @since Sun 14/May/2017 - 10:01 PM
  */
 public class QuestionCreator implements Creator<Question> {
-	private static final List<Question> list = new ArrayList<>();
+	private List<Question> list = new ArrayList<>();
 	private Database db;
 	
 	@Override
-	public List<Question> createList() {
-		if (list.isEmpty()) {
-			list.add(new Question("test question 1", "this is test question 1"));
-			list.add(new Question("test question 2", "this is test question 2"));
-			list.add(new Question("test question 3", "this is test question 3"));
-			list.add(new Question("test question 4", "this is test question 4"));
-			list.add(new Question("test question 5", "this is test question 5"));
-			list.add(new Question("test question 6", "this is test question 6"));
-			list.add(new Question("test question 7", "this is test question 7"));
-			list.add(new Question("test question 8", "this is test question 8"));
-			list.add(new Question("test question 9", "this is test question 9"));
-			list.add(new Question("test question 10", "this is test question 10"));
-		}
-		return list;
+	public Creator setList(List<Question> list) {
+		this.list = list;
+		return this;
 	}
 	
 	@Override
@@ -40,7 +29,7 @@ public class QuestionCreator implements Creator<Question> {
 	
 	@Override
 	public synchronized void insert() {
-		for (Question q : createList()) {
+		for (Question q : list) {
 			db.add(TableName.QUESTION, q);
 		}
 	}
