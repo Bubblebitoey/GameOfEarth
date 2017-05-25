@@ -17,7 +17,7 @@ public class DefaultGameStrategy implements GameStrategy {
 	
 	@Override
 	public Percent getDefaultPopulation() {
-		return new Percent(5);
+		return new Percent(10);
 	}
 	
 	@Override
