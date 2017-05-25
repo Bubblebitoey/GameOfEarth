@@ -5,6 +5,8 @@ import com.softspec.finalproj.gameofearth.api.constants.DatabaseColumns;
 import com.softspec.finalproj.gameofearth.model.database.DatabaseSavable;
 import com.softspec.finalproj.gameofearth.model.resource.Resource;
 
+import java.util.*;
+
 /**
  * Created by bubblebitoey on 5/12/2017 AD.
  */
@@ -96,5 +98,10 @@ public class Question implements DatabaseSavable {
 			q.deny = this.deny;
 			return q;
 		}
+	}
+	
+	@Override
+	public String toString() {
+		return String.format(Locale.ENGLISH, "Question (%d)\nTitle: %s\nDescription: %s\nAcceptance: %s\nDeclination: %s", getId(), getName(), getDescription(), accept.toString(), deny.toString());
 	}
 }
