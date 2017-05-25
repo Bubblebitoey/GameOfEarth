@@ -11,42 +11,44 @@
 
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="60dp"
             android:orientation="horizontal"
             android:background="#663300">
+
+        <ImageView
+                android:id="@+id/CarbonLabel"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="start"
+                android:src="@drawable/co2bar"
+                android:contentDescription="@string/carbon_information"/>
 
         <ImageView
                 android:id="@+id/Calendar"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
+                android:layout_gravity="end"
                 android:src="@drawable/calendar"
                 android:contentDescription="@string/calender"/>
-
     </LinearLayout>
 
-    <ImageView
-            android:id="@+id/CarbonLabel"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/co2bar"
-            android:contentDescription="@string/carbon_information"/>
 
     <ImageView
             android:id="@+id/PopulationLabel"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_marginTop="0dp"
             android:src="@drawable/pplbar"
-            android:contentDescription="@string/population_information"/>
+            android:contentDescription="@string/population_information"
+            />
 
     <ImageView
             android:id="@+id/City"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="match_parent"
+            android:layout_height="375dp"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="40dp"
             android:src="@drawable/city"
             android:contentDescription="@string/city_image"/>
 
@@ -69,18 +71,18 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="0dp"
-                android:src="@drawable/leader_1"/>
+                android:src="@drawable/leader_1"
+                android:paddingLeft="15dp"/>
 
         <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/ppl3"
                 android:layout_width="80dp"
                 android:layout_height="100dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="0dp"
-                android:src="@drawable/leader_3"/>
+                android:src="@drawable/leader_3"
+                android:layout_marginLeft="30dp"/>
     </LinearLayout>
 
 </LinearLayout>

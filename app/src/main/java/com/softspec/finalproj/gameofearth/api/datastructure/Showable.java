@@ -6,5 +6,7 @@ package com.softspec.finalproj.gameofearth.api.datastructure;
  * @since Thu 25/May/2017 - 10:16 PM
  */
 public interface Showable {
+	boolean isShown();
+	
 	void show();
 }
