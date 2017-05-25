@@ -3,6 +3,7 @@ package com.softspec.finalproj.gameofearth.api.management;
 import android.content.Context;
 import android.os.AsyncTask;
 import com.softspec.finalproj.gameofearth.model.database.Database;
+import com.softspec.finalproj.gameofearth.model.question.Question;
 import com.softspec.finalproj.gameofearth.model.question.QuestionCreator;
 import com.softspec.finalproj.gameofearth.model.resource.AcceptCreator;
 import com.softspec.finalproj.gameofearth.model.resource.DenyCreator;
@@ -22,8 +23,12 @@ public class DatabaseManagement extends Observable implements Runnable {
 		database = new Database(c);
 	}
 	
-	public Database getDatabase() {
+	Database getDatabase() {
 		return database;
+	}
+	
+	public Question randomQuestion() {
+		return database.randomQuestion();
 	}
 	
 	@Override
