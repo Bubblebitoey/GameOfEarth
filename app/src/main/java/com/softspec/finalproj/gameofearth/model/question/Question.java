@@ -12,7 +12,7 @@ import java.util.*;
  */
 
 public class Question implements DatabaseSavable {
-	public static long static_id = 0;
+	private static long static_id = 0;
 	
 	private long id;
 	private String name;
@@ -26,6 +26,10 @@ public class Question implements DatabaseSavable {
 		this.name = name;
 		this.description = description;
 		static_id++;
+	}
+	
+	public static long getStatic_id() {
+		return static_id;
 	}
 	
 	public long getId() {

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
               android:id="@+id/background"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
@@ -123,11 +129,13 @@
     </LinearLayout>
 
     <ImageView
+
             android:id="@+id/city"
             android:layout_width="match_parent"
-            android:layout_height="375dp"
+            android:layout_height="300dp"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="10dp"
+
             android:src="@drawable/city"
             android:contentDescription="@string/city_image"/>
 
@@ -135,22 +143,39 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
         <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/ppl1"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="100dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="0dp"
                 android:src="@drawable/leader_2"/>
 
+            <ImageButton
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/light_bulb"
+                />
+
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
         <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/ppl2"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginLeft="200dp"
-                android:layout_marginStart="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:src="@drawable/leader_1"
                 android:paddingLeft="15dp"
@@ -158,14 +183,39 @@
                 android:paddingStart="15dp"
                 android:paddingEnd="0dp"/>
 
+            <ImageButton
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/light_bulb" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
         <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/ppl3"
-                android:layout_width="80dp"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:src="@drawable/leader_3"
-                android:layout_marginLeft="30dp"
-                android:layout_marginStart="30dp"/>
+                android:src="@drawable/leader_3"/>
+
+            <ImageButton
+                android:id="@+id/button4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/light_bulb" />
+
+        </FrameLayout>
+
     </LinearLayout>
 
+
+
+
+
 </LinearLayout>
+</android.support.percent.PercentRelativeLayout>

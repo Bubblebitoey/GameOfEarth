@@ -2,12 +2,9 @@ package com.softspec.finalproj.gameofearth.api.management;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
+import com.softspec.finalproj.gameofearth.api.database.Creator;
 import com.softspec.finalproj.gameofearth.model.database.Database;
 import com.softspec.finalproj.gameofearth.model.question.Question;
-import com.softspec.finalproj.gameofearth.model.question.QuestionCreator;
-import com.softspec.finalproj.gameofearth.model.resource.AcceptCreator;
-import com.softspec.finalproj.gameofearth.model.resource.DenyCreator;
 
 import java.io.Serializable;
 import java.util.*;
@@ -68,9 +65,7 @@ public class DatabaseManagement extends Observable implements Runnable, Serializ
 		
 		@Override
 		protected Boolean doInBackground(Void... voids) {
-			new QuestionCreator().setDatabase(management.getDatabase()).insert();
-			new AcceptCreator().setDatabase(management.getDatabase()).insert();
-			new DenyCreator().setDatabase(management.getDatabase()).insert();
+			new Creator(management.getDatabase()).insert();
 			return true;
 		}
 		
