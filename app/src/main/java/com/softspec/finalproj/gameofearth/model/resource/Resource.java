@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import com.softspec.finalproj.gameofearth.api.constants.DatabaseColumns;
 import com.softspec.finalproj.gameofearth.model.database.DatabaseSavable;
 
+import java.util.*;
+
 /**
  * Created by bubblebitoey on 5/12/2017 AD.
  */
@@ -90,5 +92,10 @@ public class Resource implements DatabaseSavable {
 			r.setPop(pop);
 			return r;
 		}
+	}
+	
+	@Override
+	public String toString() {
+		return String.format(Locale.ENGLISH, "Resource (%d)\nco2: %d\npop: %d", id, getCo2(), getPop());
 	}
 }
