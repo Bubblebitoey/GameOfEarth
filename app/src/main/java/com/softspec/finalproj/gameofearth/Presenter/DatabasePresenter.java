@@ -10,6 +10,9 @@ import java.util.*;
 
 public class DatabasePresenter implements Observer {
 	DatabaseManagement databaseManagement;
+	public DatabasePresenter() {
+	
+	}
 	
 	@Override
 	public void update(Observable o, Object arg) {

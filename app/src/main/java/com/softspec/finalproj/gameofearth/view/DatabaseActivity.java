@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import com.softspec.finalproj.gameofearth.Presenter.DatabasePresenter;
 import com.softspec.finalproj.gameofearth.R;
+import com.softspec.finalproj.gameofearth.api.management.DatabaseManagement;
 import com.softspec.finalproj.gameofearth.model.database.Database;
 
 /**
@@ -18,6 +19,7 @@ public class DatabaseActivity extends AppCompatActivity implements DatabaseView{
 	ProgressBar progressBar;
 	Database database;
 	DatabasePresenter databasePresenter;
+	DatabaseManagement databaseManagement;
 	Context c;
 	
 	public DatabaseActivity(DatabasePresenter databasePresenter) {
@@ -33,7 +35,7 @@ public class DatabaseActivity extends AppCompatActivity implements DatabaseView{
 	
 	@Override
 	public void notifyOnChange() {
-	
+	runOnUiThread(databaseManagement);
 	}
 	
 	@Override
