@@ -17,6 +17,7 @@ import java.util.*;
 public class DatabaseManagement extends Observable implements Runnable {
 	private Database database;
 	
+	
 	public DatabaseManagement(Context c) {
 		database = new Database(c);
 	}
@@ -27,7 +28,7 @@ public class DatabaseManagement extends Observable implements Runnable {
 	
 	@Override
 	public void run() {
-		new DatabaseInsertionTask(this).execute();
+		if (!database.isExist()) new DatabaseInsertionTask(this).execute();
 	}
 	
 	public static class DatabaseInsertionTask extends AsyncTask<Void, Void, Boolean> {
