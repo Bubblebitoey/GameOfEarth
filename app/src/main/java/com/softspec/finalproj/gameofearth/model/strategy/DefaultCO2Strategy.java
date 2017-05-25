@@ -11,7 +11,7 @@ public class DefaultCO2Strategy implements CO2Strategy {
 	public static long serialVersionUID = 1L;
 	
 	@Override
-	public Percent calculation(long rawCO2) {
-		return new Percent(rawCO2 / 500);
+	public Percent calculationFromPopulation(long population) {
+		return new Percent(population / 500);
 	}
 }

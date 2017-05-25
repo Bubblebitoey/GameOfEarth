@@ -17,4 +17,6 @@ public interface GameStrategy extends Serializable {
 	Percent getDefaultPopulation();
 	
 	Calendar getDefaultDate();
+	
+	public boolean gameOver(long... data);
 }

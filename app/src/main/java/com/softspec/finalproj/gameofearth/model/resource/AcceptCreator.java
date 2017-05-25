@@ -21,10 +21,15 @@ public class AcceptCreator implements Creator<Resource> {
 		long id = Question.static_id;
 		if (list.isEmpty()) {
 			list.add(new Resource.Creator(0, 5, 3).create());
-			list.add(new Resource.Creator(1, 1, 5).create());
-			list.add(new Resource.Creator(2, 12, 11).create());
-			list.add(new Resource.Creator(3, 55, 23).create());
-			list.add(new Resource.Creator(4, 2, 40).create());
+			list.add(new Resource.Creator(1, -100, 5).create());
+			list.add(new Resource.Creator(2, -112, 11).create());
+			list.add(new Resource.Creator(3, 55, 12).create());
+			list.add(new Resource.Creator(4, -12, -5).create());
+			list.add(new Resource.Creator(5, 20, 10).create());
+			list.add(new Resource.Creator(6, -3, -3).create());
+			list.add(new Resource.Creator(7, 50, 10).create());
+			list.add(new Resource.Creator(8, -33, -3).create());
+			list.add(new Resource.Creator(9, -100, -4).create());
 		}
 		return list;
 	}

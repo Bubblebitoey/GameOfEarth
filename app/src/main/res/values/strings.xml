@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">GameOfEarth</string>
+    <string name="calender">calender</string>
+    <string name="carbon_information">carbon information</string>
+    <string name="population_information">population information</string>
+    <string name="city_image">city image</string>
+
+    <string name="accept">Accept</string>
+    <string name="deny">Deny</string>
 </resources>

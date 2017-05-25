@@ -21,13 +21,17 @@ public class DatabaseManagement extends Observable implements Runnable {
 	public DatabaseManagement() {
 	
 	}
+	
 	public DatabaseManagement(Context c) {
 		database = new Database(c);
+		database.checkNeedToUpdate();
 	}
+	
 	public void update(Observable o, Object arg) {
 		setChanged();
 		notifyObservers();
 	}
+	
 	Database getDatabase() {
 		return database;
 	}

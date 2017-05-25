@@ -15,7 +15,7 @@ import java.io.File;
 
 public class Database extends SQLiteOpenHelper {
 	// Database Version
-	private static final int DATABASE_VERSION = 2;
+	private static final int DATABASE_VERSION = 4;
 	// Database Name
 	private static final String DATABASE_NAME = "DataCollection";
 	
@@ -37,6 +37,7 @@ public class Database extends SQLiteOpenHelper {
 	@Override
 	public void onOpen(SQLiteDatabase db) {
 		super.onOpen(db);
+		Log.i("OPEN", "database");
 		if (!db.isReadOnly()) {
 			db.setForeignKeyConstraintsEnabled(true);
 		}
@@ -45,11 +46,17 @@ public class Database extends SQLiteOpenHelper {
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		if (oldVersion != newVersion) {
+			Log.i("UPDATE", "DATABASE");
 			for (TableName t : TableName.values()) {
 				db.execSQL("DROP TABLE IF EXISTS " + t.getName());
 			}
 			onCreate(db);
 		}
+		Log.i("NO UPDATE", "DATABASE");
+	}
+	
+	public void checkNeedToUpdate() {
+		onUpgrade(getWritableDatabase(), getWritableDatabase().getVersion(), Database.DATABASE_VERSION);
 	}
 	
 	public long add(TableName tableName, DatabaseSavable data) {
@@ -78,11 +85,11 @@ public class Database extends SQLiteOpenHelper {
 			
 			cursor.close();
 			return new Question.Builder(id)
-					       .setName(title)
-					       .setDescription(description)
-					       .setAccept(getResource(TableName.ACCEPTANCE, id))
-					       .setDeny(getResource(TableName.DECLINATION, id))
-					       .build();
+								       .setName(title)
+								       .setDescription(description)
+								       .setAccept(getResource(TableName.ACCEPTANCE, id))
+								       .setDeny(getResource(TableName.DECLINATION, id))
+								       .build();
 		}
 		
 		cursor.close();
@@ -108,8 +115,8 @@ public class Database extends SQLiteOpenHelper {
 	}
 	
 	public boolean isExist() {
+		
 		File f = context.getDatabasePath(DATABASE_NAME);
-		Log.d("DATABASE PATH", f.getAbsolutePath());
 		Log.d("DATABASE", f.exists() ? "exist": "not exist");
 		return f.exists();
 	}
