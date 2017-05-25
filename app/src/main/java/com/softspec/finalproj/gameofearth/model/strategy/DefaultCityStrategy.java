@@ -9,6 +9,9 @@ import com.softspec.finalproj.gameofearth.model.game.GameLogic;
  * @since Thu 25/May/2017 - 5:05 PM
  */
 public class DefaultCityStrategy implements CityStrategy {
+	public static long serialVersionUID = 1L;
+	
+	
 	@Override
 	public CityLevel getCurrentLevel(GameLogic logic) {
 		long population = logic.getCurrentPopulation();

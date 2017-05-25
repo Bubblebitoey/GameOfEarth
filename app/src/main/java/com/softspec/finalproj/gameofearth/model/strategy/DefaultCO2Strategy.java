@@ -8,6 +8,8 @@ import com.softspec.finalproj.gameofearth.api.datastructure.Percent;
  * @since Thu 25/May/2017 - 5:52 PM
  */
 public class DefaultCO2Strategy implements CO2Strategy {
+	public static long serialVersionUID = 1L;
+	
 	@Override
 	public Percent calculation(long rawCO2) {
 		return new Percent(rawCO2 / 500);

@@ -8,6 +8,7 @@ import com.softspec.finalproj.gameofearth.model.strategy.CO2Strategy;
 import com.softspec.finalproj.gameofearth.model.strategy.CityStrategy;
 import com.softspec.finalproj.gameofearth.model.strategy.GameStrategy;
 
+import java.io.Serializable;
 import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -18,7 +19,9 @@ import java.util.concurrent.TimeUnit;
  * @version 1.0
  * @since Thu 25/May/2017 - 4:57 PM
  */
-public class GameLogic extends Observable {
+public class GameLogic extends Observable implements Serializable {
+	public static long serialVersionUID = 1L;
+	
 	private static final long UPDATE_POPULATION_SECOND = 5;
 	/**
 	 * {@value UPDATE_DATE_SECOND} second = 1 day
