@@ -13,30 +13,110 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal"
-        android:background="#663300">
+        android:background="#404040">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+        <ImageView
+            android:id="@+id/Bigpopulation"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/pplbigbar" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="120dp"
+                android:layout_gravity="left|bottom"
+                android:padding="5dp"
+                android:text="TextView" />
+
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="0dp">
 
         <ImageView
             android:id="@+id/Calendar"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/calendar"/>
+            android:layout_width="130dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/calendarbar"/>
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="70dp"
+                android:layout_gravity="left|bottom"
+
+                android:padding="5dp"
+                android:text="TextView" />
+
+
+        </FrameLayout>
 
     </LinearLayout>
 
-    <ImageView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
             android:id="@+id/CarbonLabel"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/co2bar"/>
-
-    <ImageView
-            android:id="@+id/PopulationLabel"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
             android:layout_marginTop="0dp"
-            android:src="@drawable/pplbar"/>
+            android:src="@drawable/cabonbar" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="350dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="60dp"
+            android:layout_gravity="left|bottom"
+
+            android:padding="5dp"
+            android:text="TextView" />
+    </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/PopulationLabel"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="0dp"
+                android:src="@drawable/pplbar" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="60dp"
+                android:layout_gravity="left|bottom"
+                android:padding="5dp"
+                android:text="TextView" />
+        </FrameLayout>
+
+    </LinearLayout>
+
 
     <ImageView
             android:id="@+id/City"
@@ -45,6 +125,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:src="@drawable/city"/>
+
 
     <LinearLayout
             android:layout_width="match_parent"
