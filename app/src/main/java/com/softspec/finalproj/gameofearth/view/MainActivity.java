@@ -29,7 +29,7 @@ public class MainActivity extends FullScreenActivity implements Observer {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		city = (ImageView) findViewById(R.id.City);
+		city = (ImageView) findViewById(R.id.city);
 		
 		DatabaseManagement management = (DatabaseManagement) getIntent().getSerializableExtra(LoadedProgressActivity.DATABASE_MANAGEMENT);
 		logic = new GameLogic(this, management.reload(this), new DefaultGameStrategy(), new DefaultCityStrategy(), new DefaultCO2Strategy(), new DefaultPopulationStrategy());
