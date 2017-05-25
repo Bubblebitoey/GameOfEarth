@@ -31,7 +31,7 @@ public enum DatabaseColumns {
 		this.key = key;
 	}
 	
-	public String getDatabaseKey() {
+	public String key() {
 		return key;
 	}
 }

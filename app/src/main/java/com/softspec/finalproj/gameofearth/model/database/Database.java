@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import com.softspec.finalproj.gameofearth.api.constants.DatabaseColumns;
 import com.softspec.finalproj.gameofearth.api.constants.TableName;
+import com.softspec.finalproj.gameofearth.model.question.Question;
+import com.softspec.finalproj.gameofearth.model.resource.NullResource;
+import com.softspec.finalproj.gameofearth.model.resource.Resource;
 
 import java.io.File;
 
@@ -58,6 +61,46 @@ public class Database extends SQLiteOpenHelper {
 		long resultID = cursor.getLong(0);
 		cursor.close();
 		return resultID;
+	}
+	
+	public synchronized Question randomQuestion() {
+		Cursor cursor = getReadableDatabase().rawQuery(DatabaseQuery.RANDOM_QUESTION, null);
+		int numRow = cursor.getCount();
+		String[] columnNames = cursor.getColumnNames();
+		
+		if (numRow < 1) {
+			throw new RuntimeException("No question available");
+		}
+		if (cursor.moveToFirst()) {
+			long id = cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseColumns.ID.key()));
+			String title = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseColumns.Q_TITLE.key()));
+			String description = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseColumns.Q_DESCRIPTION.key()));
+			
+			cursor.close();
+			return new Question.Builder(id)
+					       .setName(title)
+					       .setDescription(description)
+					       .setAccept(getResource(TableName.ACCEPTANCE, id))
+					       .setDeny(getResource(TableName.DECLINATION, id))
+					       .build();
+		}
+		
+		cursor.close();
+		return null;
+	}
+	
+	public synchronized Resource getResource(TableName name, long id) {
+		Cursor cursor = getReadableDatabase().query(name.getName(), null, DatabaseColumns.ID.key() + "=?", new String[]{String.valueOf(id)}, null, null, null, "1");
+		
+		if (cursor.moveToFirst()) {
+			long co2 = cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseColumns.CO2.key()));
+			long pop = cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseColumns.POPULATION.key()));
+			
+			cursor.close();
+			return new Resource.Builder(id).setCo2(co2).setPop(pop).build();
+		}
+		cursor.close();
+		return new NullResource(id);
 	}
 	
 	public Cursor getData(TableName tableName, long id) {

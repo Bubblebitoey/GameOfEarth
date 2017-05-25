@@ -17,28 +17,29 @@ public class DatabaseManagement extends AsyncTask<Context, Void, Boolean> {
 	private Database database;
 	
 	public DatabaseManagement(Context c) {
-		execute(c);
+		database = new Database(c);
+		execute();
 	}
 	
 	@Override
 	protected Boolean doInBackground(Context... contexts) {
-		Context c = contexts[0];
-		database = new Database(c);
+		if (database.isExist()) {
+			Log.i("REJECT", "creating, database exist");
+			return false;
+		}
+		
+		new QuestionCreator().setDatabase(database).insert();
+		new AcceptCreator().setDatabase(database).insert();
+		new DenyCreator().setDatabase(database).insert();
 		return true;
 	}
 	
 	@Override
 	protected void onPostExecute(Boolean aBoolean) {
 		super.onPostExecute(aBoolean);
-		if (aBoolean) {
-			if (database.isExist()) {
-				Log.i("REJECT", "creating, database exist");
-				return;
-			}
-			
-			new QuestionCreator().setDatabase(database).insert();
-			new AcceptCreator().setDatabase(database).insert();
-			new DenyCreator().setDatabase(database).insert();
-		}
+	}
+	
+	public Database getDatabase() {
+		return database;
 	}
 }
