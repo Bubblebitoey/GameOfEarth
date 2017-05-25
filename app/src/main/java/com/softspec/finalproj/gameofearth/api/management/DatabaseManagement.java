@@ -18,11 +18,16 @@ import java.util.*;
 public class DatabaseManagement extends Observable implements Runnable {
 	private Database database;
 	
+	public DatabaseManagement() {
 	
+	}
 	public DatabaseManagement(Context c) {
 		database = new Database(c);
 	}
-	
+	public void update(Observable o, Object arg) {
+		setChanged();
+		notifyObservers();
+	}
 	Database getDatabase() {
 		return database;
 	}

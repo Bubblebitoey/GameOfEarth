@@ -2,6 +2,8 @@ package com.softspec.finalproj.gameofearth.api.management;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
+import com.softspec.finalproj.gameofearth.R;
 import com.softspec.finalproj.gameofearth.model.game.GameLogic;
 
 import java.io.Serializable;
@@ -26,5 +28,9 @@ public class ImageManagement implements Serializable {
 	
 	public Drawable getCity() {
 		return CityLoader.toggleCity(loader, logic.getCityStrategy());
+	}
+	
+	public Drawable getLightBulb() {
+		return ContextCompat.getDrawable(context, R.drawable.light_bulb);
 	}
 }

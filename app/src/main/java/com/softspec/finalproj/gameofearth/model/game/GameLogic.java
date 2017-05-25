@@ -1,6 +1,7 @@
 package com.softspec.finalproj.gameofearth.model.game;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import com.softspec.finalproj.gameofearth.api.datastructure.Percent;
 import com.softspec.finalproj.gameofearth.api.management.ImageManagement;
@@ -88,6 +89,14 @@ public class GameLogic extends Observable implements Serializable {
 	
 	public Percent getPopulation() {
 		return population;
+	}
+	
+	public Drawable getCity() {
+		return imageManagement.getCity();
+	}
+	
+	public Drawable getLight() {
+		return imageManagement.getLightBulb();
 	}
 	
 	public long getDate() {
