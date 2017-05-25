@@ -23,7 +23,8 @@ import java.util.concurrent.TimeUnit;
 public class GameLogic extends Observable implements Serializable {
 	public static long serialVersionUID = 1L;
 	
-	private static final long UPDATE_POPULATION_SECOND = 5;
+	private static final long UPDATE_POPULATION_SECOND = 3;
+	
 	/**
 	 * {@value UPDATE_DATE_SECOND} second = 1 day
 	 */
@@ -91,8 +92,20 @@ public class GameLogic extends Observable implements Serializable {
 		return population;
 	}
 	
+	public void updatePopulation(Percent percent) {
+		population.add(percent);
+	}
+	
+	public void updateCO2(long add) {
+		co2 += add;
+	}
+	
 	public Drawable getCity() {
 		return imageManagement.getCity();
+	}
+	
+	public Drawable getDefaultCity() {
+		return imageManagement.getDefaultCity();
 	}
 	
 	public Drawable getLight() {
@@ -113,15 +126,27 @@ public class GameLogic extends Observable implements Serializable {
 		runService.shutdownNow();
 	}
 	
+	public boolean isGameOver() {
+		return gameStrategy.gameOver(currentPopulation);
+	}
+	
 	private Runnable getUpdatePopTask() {
 		return new Runnable() {
 			@Override
 			public void run() {
-				currentPopulation += Math.ceil(currentPopulation * population.percent());
-				currentPopulation -= Math.ceil(currentPopulation * co2Strategy.calculation(co2).percent());
+				long add = (long) Math.ceil(currentPopulation * population.percent()); // increase
+				long decrease1 = (long) Math.ceil(currentPopulation * co2Strategy.calculationFromCO2(co2).percent()); // decrease;
+				// update pop
+				currentPopulation += add;
+				currentPopulation -= decrease1;
+				// update co2
+				updateCO2((long) Math.ceil(co2Strategy.calculationFromPopulation(currentPopulation).percent()));
+				// notify observer
 				setChanged();
 				notifyObservers();
-				Log.i("UPDATE POPULATION TO", String.valueOf(currentPopulation));
+				// log
+				Log.i("UPDATE POPULATION TO", "ADD: " + add + ", SUB1: " + decrease1 + ", RESULT: " + String.valueOf(currentPopulation));
+				Log.i("UPDATE CO2 TO", String.valueOf(co2));
 			}
 		};
 	}
