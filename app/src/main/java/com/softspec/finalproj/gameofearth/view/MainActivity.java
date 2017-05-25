@@ -8,6 +8,7 @@ import com.softspec.finalproj.gameofearth.model.game.GameLogic;
 import com.softspec.finalproj.gameofearth.model.strategy.DefaultCO2Strategy;
 import com.softspec.finalproj.gameofearth.model.strategy.DefaultCityStrategy;
 import com.softspec.finalproj.gameofearth.model.strategy.DefaultGameStrategy;
+import com.softspec.finalproj.gameofearth.model.strategy.DefaultPopulationStrategy;
 
 import java.util.*;
 
@@ -22,7 +23,7 @@ public class MainActivity extends FullScreenActivity implements Observer {
 		
 		city = (ImageView) findViewById(R.id.City);
 		
-		logic = new GameLogic(this, new DefaultGameStrategy(), new DefaultCityStrategy(), new DefaultCO2Strategy());
+		logic = new GameLogic(this, new DefaultGameStrategy(), new DefaultCityStrategy(), new DefaultCO2Strategy(), new DefaultPopulationStrategy());
 		logic.addObserver(this);
 		logic.startGame();
 	}
