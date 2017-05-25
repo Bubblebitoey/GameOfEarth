@@ -30,6 +30,10 @@ public class ImageManagement implements Serializable {
 		return CityLoader.toggleCity(loader, logic.getCityStrategy());
 	}
 	
+	public Drawable getDefaultCity() {
+		return loader.getCityLevel_0();
+	}
+	
 	public Drawable getLightBulb() {
 		return ContextCompat.getDrawable(context, R.drawable.light_bulb);
 	}

@@ -16,6 +16,14 @@ public class Percent implements Serializable {
 		this.number = number;
 	}
 	
+	public void add(long add) {
+		number += add;
+	}
+	
+	public void add(Percent add) {
+		number += add.number;
+	}
+	
 	public double percent() {
 		return number / 100.0;
 	}
