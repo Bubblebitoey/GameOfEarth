@@ -1,5 +1,7 @@
 package com.softspec.finalproj.gameofearth.model.strategy;
 
+import com.softspec.finalproj.gameofearth.api.datastructure.Percent;
+
 import java.util.*;
 
 /**
@@ -10,7 +12,7 @@ import java.util.*;
 public interface GameStrategy {
 	long getDefaultCO2();
 	
-	long getDefaultPopulation();
+	Percent getDefaultPopulation();
 	
-	Date getDefaultDate();
+	Calendar getDefaultDate();
 }
