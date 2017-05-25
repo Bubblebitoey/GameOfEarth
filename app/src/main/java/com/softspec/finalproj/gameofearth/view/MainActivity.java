@@ -23,13 +23,12 @@ public class MainActivity extends Activity implements Observer {
 		management = new DatabaseManagement(this);
 		management.addObserver(this);
 		management.run();
-		
 	}
 	
 	@Override
 	public void update(Observable observable, Object o) {
 		if (observable instanceof DatabaseManagement) {
-			Question q = management.getDatabase().randomQuestion();
+			Question q = management.randomQuestion();
 			System.out.println(q.toString());
 		}
 	}
