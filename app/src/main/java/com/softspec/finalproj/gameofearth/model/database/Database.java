@@ -6,25 +6,36 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import com.softspec.finalproj.gameofearth.api.constants.DatabaseColumns;
+import com.softspec.finalproj.gameofearth.api.constants.LogConstants;
 import com.softspec.finalproj.gameofearth.api.constants.TableName;
 import com.softspec.finalproj.gameofearth.model.question.Question;
 import com.softspec.finalproj.gameofearth.model.resource.NullResource;
 import com.softspec.finalproj.gameofearth.model.resource.Resource;
 
 import java.io.File;
+import java.io.Serializable;
 
-public class Database extends SQLiteOpenHelper {
+public class Database extends SQLiteOpenHelper implements Serializable {
+	public static long serialVersionUID = 1L;
+	private static Database database;
+	
 	// Database Version
 	private static final int DATABASE_VERSION = 4;
 	// Database Name
 	private static final String DATABASE_NAME = "DataCollection";
 	
+	public static Database getInstance() {
+		if (database == null) throw new RuntimeException("Don't have context for database");
+		return database;
+	}
 	
-	private Context context;
+	public static Database getInstance(Context context) {
+		if (database == null) database = new Database(context.getApplicationContext());
+		return database;
+	}
 	
-	public Database(Context context) {
+	private Database(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
-		this.context = context;
 	}
 	
 	@Override
@@ -37,7 +48,7 @@ public class Database extends SQLiteOpenHelper {
 	@Override
 	public void onOpen(SQLiteDatabase db) {
 		super.onOpen(db);
-		Log.i("OPEN", "database");
+		Log.i(LogConstants.Action.OPEN, LogConstants.Object.DATABASE);
 		if (!db.isReadOnly()) {
 			db.setForeignKeyConstraintsEnabled(true);
 		}
@@ -46,13 +57,13 @@ public class Database extends SQLiteOpenHelper {
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		if (oldVersion != newVersion) {
-			Log.i("UPDATE", "DATABASE");
+			Log.i(LogConstants.Action.UPDATE, LogConstants.Object.DATABASE);
 			for (TableName t : TableName.values()) {
 				db.execSQL("DROP TABLE IF EXISTS " + t.getName());
 			}
 			onCreate(db);
 		}
-		Log.i("NO UPDATE", "DATABASE");
+		Log.i(LogConstants.Action.NO_UPDATE, LogConstants.Object.DATABASE);
 	}
 	
 	public void checkNeedToUpdate() {
@@ -84,12 +95,7 @@ public class Database extends SQLiteOpenHelper {
 			String description = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseColumns.Q_DESCRIPTION.key()));
 			
 			cursor.close();
-			return new Question.Builder(id)
-								       .setName(title)
-								       .setDescription(description)
-								       .setAccept(getResource(TableName.ACCEPTANCE, id))
-								       .setDeny(getResource(TableName.DECLINATION, id))
-								       .build();
+			return new Question.Builder(id).setName(title).setDescription(description).setAccept(getResource(TableName.ACCEPTANCE, id)).setDeny(getResource(TableName.DECLINATION, id)).build();
 		}
 		
 		cursor.close();
@@ -114,10 +120,9 @@ public class Database extends SQLiteOpenHelper {
 		return getReadableDatabase().query(tableName.getName(), null, DatabaseColumns.ID + "=?", new String[]{String.valueOf(id)}, null, null, null);
 	}
 	
-	public boolean isExist() {
-		
+	public boolean isExist(Context context) {
 		File f = context.getDatabasePath(DATABASE_NAME);
-		Log.d("DATABASE", f.exists() ? "exist": "not exist");
+		Log.d(LogConstants.Object.DATABASE, f.exists() ? "exist": "not exist");
 		return f.exists();
 	}
 }

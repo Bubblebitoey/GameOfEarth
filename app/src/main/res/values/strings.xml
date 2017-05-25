@@ -7,4 +7,11 @@
 
     <string name="accept">Accept</string>
     <string name="deny">Deny</string>
+
+    <string name="result_title">New Policy Result</string>
+    <string name="result_accept">New Policy Accepted</string>
+    <string name="result_deny">New Policy Denied!</string>
+    <string name="ok">OK</string>
+    <string name="default_int_value">0</string>
+    <string name="current_population">current population</string>
 </resources>

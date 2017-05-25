@@ -9,10 +9,10 @@ import com.softspec.finalproj.gameofearth.api.management.DatabaseManagement;
 
 import java.util.*;
 
-public class LoadingActivity extends FullScreenActivity implements Observer {
-	public static final String GAME_LOGIC = "game_logic";
+public class LoadedProgressActivity extends FullScreenActivity implements Observer {
+	public static final String DATABASE_MANAGEMENT = "database_management";
 	private AnimatedCircleLoadingView progressBar;
-	private static DatabaseManagement management;
+	private DatabaseManagement management;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +24,15 @@ public class LoadingActivity extends FullScreenActivity implements Observer {
 		progressBar.setAnimationListener(new AnimatedCircleLoadingView.AnimationListener() {
 			@Override
 			public void onAnimationEnd(boolean b) {
-				startActivity(new Intent(LoadingActivity.this, MainActivity.class));
+				Intent intent = new Intent(LoadedProgressActivity.this, MainActivity.class);
+				intent.putExtra(DATABASE_MANAGEMENT, management);
+				startActivity(intent);
 			}
 		});
 		
 		management = new DatabaseManagement(this);
 		management.addObserver(this);
 		management.run();
-		
 	}
 	
 	@Override

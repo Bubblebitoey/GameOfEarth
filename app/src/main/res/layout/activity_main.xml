@@ -1,138 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
               android:id="@+id/background"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@drawable/bg"
               android:orientation="vertical">
 
-
     <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="horizontal"
-        android:background="#404040">
-
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-
-        <ImageView
-            android:id="@+id/Bigpopulation"
-            android:layout_width="240dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/pplbigbar" />
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="200dp"
-                android:layout_height="45dp"
-                android:layout_marginLeft="100dp"
-                android:layout_gravity="left|bottom"
-                android:padding="5dp"
-                android:text="TextView" />
-
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginLeft="0dp">
-
-        <ImageView
-            android:id="@+id/Calendar"
-            android:layout_width="130dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="30dp"
-            android:src="@drawable/calendarbar"/>
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="200dp"
-                android:layout_height="45dp"
-                android:layout_marginLeft="70dp"
-                android:layout_gravity="left|bottom"
-
-                android:padding="5dp"
-                android:text="TextView" />
-
-
-        </FrameLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="vertical">
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-
-
- <ImageView
-            android:id="@+id/CarbonLabel"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="0dp"
-
-            android:src="@drawable/cabonbar" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="350dp"
-            android:layout_height="35dp"
-            android:layout_marginLeft="60dp"
-            android:layout_gravity="left|bottom"
-
-            android:padding="5dp"
-            android:text="TextView" />
-    </FrameLayout>
-
-        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:background="#404040"
+            android:baselineAligned="false">
+
+        <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
 
             <ImageView
-                android:id="@+id/PopulationLabel"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="0dp"
-                android:src="@drawable/pplbar" />
+                    android:id="@+id/big_population"
+                    android:layout_width="240dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/pplbigbar"
+                    android:contentDescription="@string/current_population"/>
 
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="350dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="60dp"
-                android:layout_gravity="left|bottom"
-                android:padding="5dp"
-                android:text="TextView" />
+                    android:id="@+id/current_population_text"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginStart="100dp"
+                    android:layout_gravity="start|bottom"
+                    android:padding="5dp"
+                    android:text="@string/default_int_value"/>
+        </FrameLayout>
+
+        <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="0dp"
+                android:layout_marginStart="0dp">
+
+            <ImageView
+                    android:id="@+id/calendar"
+                    android:layout_width="130dp"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginStart="30dp"
+                    android:src="@drawable/calendarbar"
+                    android:contentDescription="@string/calender"/>
+
+            <TextView
+                    android:id="@+id/calendar_text"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginStart="70dp"
+                    android:layout_gravity="start|bottom"
+                    android:padding="5dp"
+                    android:text="@string/default_int_value"/>
         </FrameLayout>
 
     </LinearLayout>
 
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="vertical">
 
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+
+            <ImageView
+                    android:id="@+id/carbon_image"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/cabonbar"
+                    android:contentDescription="@string/carbon_information"/>
+
+            <TextView
+                    android:id="@+id/carbon_text"
+                    android:layout_width="350dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginStart="60dp"
+                    android:layout_gravity="start|bottom"
+                    android:padding="5dp"
+                    android:text="@string/default_int_value"/>
+        </FrameLayout>
+
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+            <ImageView
+                    android:id="@+id/population_image"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/pplbar"
+                    android:contentDescription="@string/population_information"/>
+
+            <TextView
+                    android:id="@+id/population_text"
+                    android:layout_width="350dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginStart="60dp"
+                    android:layout_gravity="start|bottom"
+                    android:padding="5dp"
+                    android:text="@string/default_int_value"/>
+        </FrameLayout>
+    </LinearLayout>
 
     <ImageView
-            android:id="@+id/City"
-            android:layout_width="300dp"
-            android:layout_height="240dp"
+
+            android:id="@+id/city"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
             android:layout_gravity="center"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="10dp"
+
             android:src="@drawable/city"
             android:contentDescription="@string/city_image"/>
-
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -145,13 +150,19 @@
 
         <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/ppl1"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="100dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="0dp"
                 android:src="@drawable/leader_2"/>
 
+            <ImageButton
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/light_bulb"
+                />
 
 
         </FrameLayout>
@@ -163,12 +174,20 @@
 
         <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/ppl2"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginLeft="200dp"
-                android:layout_marginStart="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:src="@drawable/leader_1"/>
+                android:src="@drawable/leader_1"
+                android:paddingLeft="15dp"
+                android:paddingRight="0dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="0dp"/>
+
+            <ImageButton
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/light_bulb" />
 
         </FrameLayout>
 
@@ -179,26 +198,24 @@
 
         <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/ppl3"
-                android:layout_width="80dp"
-                android:layout_height="100dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:src="@drawable/leader_3"/>
 
+            <ImageButton
+                android:id="@+id/button4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/light_bulb" />
+
         </FrameLayout>
+
     </LinearLayout>
 
-    <android.support.percent.PercentRelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ImageView
-            app:layout_widthPercent="50%"
-            app:layout_heightPercent="50%"
-            app:layout_marginTopPercent="25%"
-            app:layout_marginLeftPercent="25%"/>
-    </android.support.percent.PercentRelativeLayout>
+
+
+
 
 </LinearLayout>
+</android.support.percent.PercentRelativeLayout>
