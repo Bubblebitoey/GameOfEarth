@@ -10,5 +10,7 @@ import java.io.Serializable;
  * @since Thu 25/May/2017 - 5:49 PM
  */
 public interface CO2Strategy extends Serializable {
-	Percent calculation(long input);
+	Percent calculationFromCO2(long input);
+	
+	Percent calculationFromPopulation(long population);
 }

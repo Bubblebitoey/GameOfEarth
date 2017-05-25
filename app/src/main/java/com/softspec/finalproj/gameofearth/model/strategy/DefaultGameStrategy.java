@@ -26,4 +26,12 @@ public class DefaultGameStrategy implements GameStrategy {
 	public Calendar getDefaultDate() {
 		return new GregorianCalendar(2017, 1, 1);
 	}
+	
+	@Override
+	public boolean gameOver(long... data) {
+		for (long d : data) {
+			if (d < 0) return true;
+		}
+		return false;
+	}
 }
