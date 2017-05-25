@@ -20,7 +20,8 @@
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/calendar"/>
+                android:src="@drawable/calendar"
+                android:contentDescription="@string/calender"/>
 
     </LinearLayout>
 
@@ -29,14 +30,16 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/co2bar"/>
+            android:src="@drawable/co2bar"
+            android:contentDescription="@string/carbon_information"/>
 
     <ImageView
             android:id="@+id/PopulationLabel"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginTop="0dp"
-            android:src="@drawable/pplbar"/>
+            android:src="@drawable/pplbar"
+            android:contentDescription="@string/population_information"/>
 
     <ImageView
             android:id="@+id/City"
@@ -44,46 +47,39 @@
             android:layout_height="300dp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:src="@drawable/city"/>
+            android:src="@drawable/city"
+            android:contentDescription="@string/city_image"/>
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-
         <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/ppl1"
                 android:layout_width="80dp"
                 android:layout_height="100dp"
-                android:layout_marginLeft="80dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="0dp"
-                android:src="@drawable/leader_2"
-
-                />
+                android:src="@drawable/leader_2"/>
 
         <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/ppl2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="0dp"
-                android:src="@drawable/leader_1"
-
-                />
+                android:src="@drawable/leader_1"/>
 
         <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/ppl3"
                 android:layout_width="80dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="0dp"
-                android:src="@drawable/leader_3"
-
-                />
-
-
+                android:src="@drawable/leader_3"/>
     </LinearLayout>
-
-
 </LinearLayout>
