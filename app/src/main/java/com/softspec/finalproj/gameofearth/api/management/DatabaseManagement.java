@@ -34,6 +34,10 @@ public class DatabaseManagement extends Observable implements Runnable {
 	@Override
 	public void run() {
 		if (!database.isExist()) new DatabaseInsertionTask(this).execute();
+		else {
+			setChanged();
+			notifyObservers();
+		}
 	}
 	
 	public static class DatabaseInsertionTask extends AsyncTask<Void, Void, Boolean> {
