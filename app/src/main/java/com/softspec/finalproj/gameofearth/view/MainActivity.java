@@ -1,6 +1,8 @@
 package com.softspec.finalproj.gameofearth.view;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.widget.ImageView;
 import com.softspec.finalproj.gameofearth.R;
 import com.softspec.finalproj.gameofearth.model.game.GameLogic;
 import com.softspec.finalproj.gameofearth.model.strategy.DefaultCO2Strategy;
@@ -11,11 +13,14 @@ import java.util.*;
 
 public class MainActivity extends FullScreenActivity implements Observer {
 	private static GameLogic logic;
+	private ImageView city;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		city = (ImageView) findViewById(R.id.City);
 		
 		logic = new GameLogic(this, new DefaultGameStrategy(), new DefaultCityStrategy(), new DefaultCO2Strategy());
 		logic.addObserver(this);
@@ -25,8 +30,28 @@ public class MainActivity extends FullScreenActivity implements Observer {
 	@Override
 	public void update(Observable observable, Object o) {
 		if (observable instanceof GameLogic) {
-			logic.getCity();
-			// TODO: 5/25/2017 AD do something
+			if (logic.isGameOver()) {
+				setCity(logic.getDefaultCity());
+				logic.stopGame();
+			} else {
+				setCity(logic.getCity());
+			}
 		}
+	}
+	
+	public void setCity(Drawable city) {
+		this.city.setImageDrawable(city);
+	}
+	
+	public void setCurrentPopulation() {
+	
+	}
+	
+	public void setPercentPopulation() {
+	
+	}
+	
+	public void setCO2() {
+	
 	}
 }
