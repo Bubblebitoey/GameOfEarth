@@ -10,7 +10,6 @@ import com.softspec.finalproj.gameofearth.model.strategy.GameStrategy;
 
 import java.util.*;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
@@ -26,8 +25,6 @@ public class GameLogic extends Observable {
 	 */
 	private static final long UPDATE_DATE_SECOND = 10;
 	private static final ScheduledExecutorService runService = Executors.newScheduledThreadPool(20);
-	private static Future populationUpdateFuture;
-	private static Future dateUpdateFuture;
 	
 	private GameStrategy gameStrategy;
 	private CityStrategy cityStrategy;
@@ -96,8 +93,8 @@ public class GameLogic extends Observable {
 	}
 	
 	public void startGame() {
-		populationUpdateFuture = runService.scheduleWithFixedDelay(getUpdatePopTask(), 0, UPDATE_POPULATION_SECOND, TimeUnit.SECONDS);
-		dateUpdateFuture = runService.scheduleWithFixedDelay(getUpdateDateTask(), 0, UPDATE_DATE_SECOND, TimeUnit.SECONDS);
+		runService.scheduleWithFixedDelay(getUpdatePopTask(), 0, UPDATE_POPULATION_SECOND, TimeUnit.SECONDS);
+		runService.scheduleWithFixedDelay(getUpdateDateTask(), 0, UPDATE_DATE_SECOND, TimeUnit.SECONDS);
 	}
 	
 	public void stopGame() {
