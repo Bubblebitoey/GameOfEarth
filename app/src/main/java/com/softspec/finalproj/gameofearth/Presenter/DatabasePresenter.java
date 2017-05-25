@@ -13,6 +13,6 @@ public class DatabasePresenter implements Observer {
 	
 	@Override
 	public void update(Observable o, Object arg) {
-	
+	databaseManagement.update(o,arg);
 	}
 }

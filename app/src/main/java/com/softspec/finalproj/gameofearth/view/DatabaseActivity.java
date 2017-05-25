@@ -26,11 +26,14 @@ public class DatabaseActivity extends AppCompatActivity implements DatabaseView{
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_database);
+		
 		progressBar = (ProgressBar) findViewById(R.id.progress_bar);
 	}
 	
 	@Override
 	public void notifyOnChange() {
+	
 	}
 	
 	@Override

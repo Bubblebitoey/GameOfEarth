@@ -6,6 +6,8 @@
     <ProgressBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/progress_bar"/>
+            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+            android:id="@+id/progress_bar"
+            android:visibility="invisible"/>
 
 </LinearLayout>
