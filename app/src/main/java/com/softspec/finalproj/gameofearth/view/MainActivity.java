@@ -25,6 +25,7 @@ public class MainActivity extends FullScreenActivity implements Observer {
 	@Override
 	public void update(Observable observable, Object o) {
 		if (observable instanceof GameLogic) {
+			logic.getCity();
 			// TODO: 5/25/2017 AD do something
 		}
 	}
