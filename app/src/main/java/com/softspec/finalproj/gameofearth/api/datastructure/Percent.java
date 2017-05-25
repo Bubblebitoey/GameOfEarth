@@ -1,6 +1,7 @@
 package com.softspec.finalproj.gameofearth.api.datastructure;
 
 import java.io.Serializable;
+import java.util.*;
 
 /**
  * @author kamontat
@@ -24,7 +25,20 @@ public class Percent implements Serializable {
 		number += add.number;
 	}
 	
+	public void remove(long remove) {
+		number -= remove;
+	}
+	
+	public void remove(Percent remove) {
+		number -= remove.number;
+	}
+	
 	public double percent() {
 		return number / 100.0;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format(Locale.ENGLISH, "%d%% ~ %.2f", number, percent());
 	}
 }
