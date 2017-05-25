@@ -39,7 +39,7 @@
                 android:id="@+id/lender_1"
                 android:layout_width="50dp"
                 android:layout_height="100dp"
-
+                android:layout_marginStart="0dp"
                 android:layout_marginLeft="0dp"
                 android:layout_weight="1"
                 android:src="@drawable/lender_2"/>
@@ -48,6 +48,7 @@
                 android:id="@+id/lender_2"
                 android:layout_width="50dp"
                 android:layout_height="100dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginLeft="0dp"
                 android:layout_marginTop="0dp"
                 android:layout_weight="1"
@@ -57,6 +58,7 @@
                 android:id="@+id/lender3"
                 android:layout_width="50dp"
                 android:layout_height="100dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginLeft="0dp"
                 android:layout_marginTop="0dp"
                 android:layout_weight="1"
