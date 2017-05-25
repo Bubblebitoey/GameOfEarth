@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
 import android.support.v4.content.ContextCompat;
 import com.softspec.finalproj.gameofearth.R;
+import com.softspec.finalproj.gameofearth.model.game.GameLogic;
 import com.softspec.finalproj.gameofearth.model.strategy.CityStrategy;
 
 /**
@@ -13,14 +14,16 @@ import com.softspec.finalproj.gameofearth.model.strategy.CityStrategy;
  * @since Thu 25/May/2017 - 4:46 PM
  */
 public class CityLoader {
+	private GameLogic logic;
 	private Context context;
 	
-	public CityLoader(Context context) {
+	public CityLoader(Context context, GameLogic logic) {
+		this.logic = logic;
 		this.context = context;
 	}
 	
 	public static Drawable toggleCity(CityLoader loader, CityStrategy g) {
-		switch (g.getCurrentLevel()) {
+		switch (g.getCurrentLevel(loader.logic)) {
 			case LEVEL_0:
 				return loader.getCityLevel_0();
 			case LEVEL_1:

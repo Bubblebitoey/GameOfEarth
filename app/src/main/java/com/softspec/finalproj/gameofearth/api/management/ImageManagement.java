@@ -2,6 +2,7 @@ package com.softspec.finalproj.gameofearth.api.management;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import com.softspec.finalproj.gameofearth.model.game.GameLogic;
 
 /**
  * @author kamontat
@@ -10,15 +11,16 @@ import android.graphics.drawable.Drawable;
  */
 public class ImageManagement {
 	private Context context;
+	private GameLogic logic;
 	private CityLoader loader;
 	
-	public ImageManagement(Context context) {
+	public ImageManagement(Context context, GameLogic logic) {
 		this.context = context;
-		loader = new CityLoader(context);
+		this.logic = logic;
+		loader = new CityLoader(context, logic);
 	}
 	
 	public Drawable getCity() {
-		// return CityLoader.toggleCity(loader, );
-		return null;
+		return CityLoader.toggleCity(loader, logic.getCityStrategy());
 	}
 }
