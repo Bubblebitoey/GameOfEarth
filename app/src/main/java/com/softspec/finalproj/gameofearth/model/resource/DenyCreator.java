@@ -20,7 +20,9 @@ public class DenyCreator implements Creator<Resource> {
 	public List<Resource> createList() {
 		long id = Question.static_id;
 		if (list.isEmpty()) {
-			list.add(new Resource.Creator(0, 3, -20).create());
+			// carbon shold to noe less than 100
+			// pop unit in percent maynot over10 can ติดลบ
+			list.add(new Resource.Creator(0, 200, 0).create());
 			list.add(new Resource.Creator(1, 14, 3).create());
 			list.add(new Resource.Creator(2, -44, 5).create());
 			list.add(new Resource.Creator(3, 120, 20).create());

@@ -18,11 +18,11 @@ public class QuestionCreator implements Creator<Question> {
 	@Override
 	public List<Question> createList() {
 		if (list.isEmpty()) {
-			list.add(new Question("test question 1", "this is test question 1"));
-			list.add(new Question("test question 2", "this is test question 2"));
-			list.add(new Question("test question 3", "this is test question 3"));
-			list.add(new Question("test question 4", "this is test question 4"));
-			list.add(new Question("test question 5", "this is test question 5"));
+			list.add(new Question("Toilet Paper", "Thieves are stealing our toilet paper in public toilets. Install facial recognition cameras so that each visitor can only take two pieces of toilet paper."));
+			list.add(new Question("Gluten Free Labeling", "Business are claiming their products are gluten-free when they are not. We should set clear standards for gluten-free labeling!"));
+			list.add(new Question("Ecofriendly Standards", "Companies are not meeting the eco-friendly standards. Let them continue for a small annual fine?"));
+			list.add(new Question("Indigenous Benefits", "We should compensate the indigenous inhabitants with extra social benefits so they can live in harmony."));
+			list.add(new Question("Cure the Cows", "Our cows are infected with a deadly disease! stop beef product until the cows are cured?"));
 			list.add(new Question("test question 6", "this is test question 6"));
 			list.add(new Question("test question 7", "this is test question 7"));
 			list.add(new Question("test question 8", "this is test question 8"));

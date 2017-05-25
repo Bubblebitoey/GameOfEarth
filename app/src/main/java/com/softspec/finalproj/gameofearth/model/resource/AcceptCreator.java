@@ -20,7 +20,7 @@ public class AcceptCreator implements Creator<Resource> {
 	public List<Resource> createList() {
 		long id = Question.static_id;
 		if (list.isEmpty()) {
-			list.add(new Resource.Creator(0, 5, 3).create());
+			list.add(new Resource.Creator(0, -200, 0).create());
 			list.add(new Resource.Creator(1, -100, 5).create());
 			list.add(new Resource.Creator(2, -112, 11).create());
 			list.add(new Resource.Creator(3, 55, 12).create());
