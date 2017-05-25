@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 import com.softspec.finalproj.gameofearth.R;
 import com.softspec.finalproj.gameofearth.api.constants.LogConstants;
 import com.softspec.finalproj.gameofearth.api.management.DatabaseManagement;
@@ -21,6 +22,11 @@ import java.util.*;
 public class MainActivity extends FullScreenActivity implements Observer {
 	private static GameLogic logic;
 	private ImageView city;
+	private TextView currentPopTextView;
+	private TextView popTextView;
+	private TextView co2TextView;
+	private TextView dateTextView;
+	
 	
 	private QuestionDialog questionDialog;
 	
@@ -30,6 +36,11 @@ public class MainActivity extends FullScreenActivity implements Observer {
 		setContentView(R.layout.activity_main);
 		
 		city = (ImageView) findViewById(R.id.city);
+		
+		currentPopTextView = (TextView) findViewById(R.id.current_population_text);
+		popTextView = (TextView) findViewById(R.id.population_text);
+		co2TextView = (TextView) findViewById(R.id.carbon_text);
+		dateTextView = (TextView) findViewById(R.id.calendar_text);
 		
 		DatabaseManagement management = (DatabaseManagement) getIntent().getSerializableExtra(LoadedProgressActivity.DATABASE_MANAGEMENT);
 		logic = new GameLogic(this, management.reload(this), new DefaultGameStrategy(), new DefaultCityStrategy(), new DefaultCO2Strategy(), new DefaultPopulationStrategy());
@@ -58,6 +69,15 @@ public class MainActivity extends FullScreenActivity implements Observer {
 			Resource r = (Resource) o;
 			logic.update(r);
 		}
+		
+		update();
+	}
+	
+	public void update() {
+		setCurrentPopulation();
+		setPercentPopulation();
+		setCO2();
+		setDate();
 	}
 	
 	public void setCity(Drawable city) {
@@ -65,15 +85,19 @@ public class MainActivity extends FullScreenActivity implements Observer {
 	}
 	
 	public void setCurrentPopulation() {
-	
+		currentPopTextView.setText(String.valueOf(logic.getCurrentPopulation()));
 	}
 	
 	public void setPercentPopulation() {
-	
+		popTextView.setText(String.format(Locale.ENGLISH, "%d%%", logic.getPopulation().getNumber()));
 	}
 	
 	public void setCO2() {
+		co2TextView.setText(String.valueOf(logic.getCo2()));
+	}
 	
+	public void setDate() {
+		dateTextView.setText(String.format(Locale.ENGLISH, "Day: %d", logic.getDate()));
 	}
 	
 	public void showQuestion() {

@@ -33,6 +33,10 @@ public class Percent implements Serializable {
 		number -= remove.number;
 	}
 	
+	public long getNumber() {
+		return number;
+	}
+	
 	public double percent() {
 		return number / 100.0;
 	}
