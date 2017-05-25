@@ -4,12 +4,16 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import com.softspec.finalproj.gameofearth.model.game.GameLogic;
 
+import java.io.Serializable;
+
 /**
  * @author kamontat
  * @version 1.0
  * @since Thu 25/May/2017 - 4:46 PM
  */
-public class ImageManagement {
+public class ImageManagement implements Serializable {
+	public static long serialVersionUID = 1L;
+	
 	private Context context;
 	private GameLogic logic;
 	private CityLoader loader;

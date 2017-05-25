@@ -16,7 +16,13 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+<<<<<<< HEAD
         mavenCentral()
+=======
+        maven {
+            url "http://dl.bintray.com/jlmd/maven"
+        }
+>>>>>>> 27603b3dd6644d1a09cbe40ed8a0e96a05f494e2
     }
 }
 

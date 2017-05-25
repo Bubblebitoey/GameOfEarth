@@ -8,6 +8,7 @@ import com.softspec.finalproj.gameofearth.model.strategy.CO2Strategy;
 import com.softspec.finalproj.gameofearth.model.strategy.CityStrategy;
 import com.softspec.finalproj.gameofearth.model.strategy.GameStrategy;
 
+import java.io.Serializable;
 import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -18,13 +19,15 @@ import java.util.concurrent.TimeUnit;
  * @version 1.0
  * @since Thu 25/May/2017 - 4:57 PM
  */
-public class GameLogic {
+public class GameLogic extends Observable implements Serializable {
+	public static long serialVersionUID = 1L;
+	
 	private static final long UPDATE_POPULATION_SECOND = 5;
 	/**
 	 * {@value UPDATE_DATE_SECOND} second = 1 day
 	 */
-	private static final long UPDATE_DATE_SECOND = 15;
-	private static final ScheduledExecutorService runService = Executors.newScheduledThreadPool(10);
+	private static final long UPDATE_DATE_SECOND = 10;
+	private static final ScheduledExecutorService runService = Executors.newScheduledThreadPool(20);
 	
 	private GameStrategy gameStrategy;
 	private CityStrategy cityStrategy;
@@ -55,7 +58,7 @@ public class GameLogic {
 		this.cityStrategy = cityStrategy;
 		this.co2Strategy = co2Strategy;
 		
-		currentPopulation = 0;
+		currentPopulation = 100;
 		co2 = gameStrategy.getDefaultCO2();
 		population = gameStrategy.getDefaultPopulation();
 		date = gameStrategy.getDefaultDate();
@@ -79,8 +82,20 @@ public class GameLogic {
 		return co2Strategy;
 	}
 	
+	public long getCo2() {
+		return co2;
+	}
+	
+	public Percent getPopulation() {
+		return population;
+	}
+	
+	public long getDate() {
+		// get total date
+		return date.get(Calendar.DAY_OF_YEAR) + (365 * (date.get(Calendar.YEAR) - gameStrategy.getDefaultDate().get(Calendar.YEAR)));
+	}
+	
 	public void startGame() {
-		if (!runService.isTerminated()) stopGame();
 		runService.scheduleWithFixedDelay(getUpdatePopTask(), 0, UPDATE_POPULATION_SECOND, TimeUnit.SECONDS);
 		runService.scheduleWithFixedDelay(getUpdateDateTask(), 0, UPDATE_DATE_SECOND, TimeUnit.SECONDS);
 	}
@@ -93,9 +108,11 @@ public class GameLogic {
 		return new Runnable() {
 			@Override
 			public void run() {
-				currentPopulation += (currentPopulation * population.percent());
-				currentPopulation -= (currentPopulation * co2Strategy.calculation(co2).percent());
-				Log.d("UPDATE POPULATION TO", String.valueOf(currentPopulation));
+				currentPopulation += Math.ceil(currentPopulation * population.percent());
+				currentPopulation -= Math.ceil(currentPopulation * co2Strategy.calculation(co2).percent());
+				setChanged();
+				notifyObservers();
+				Log.i("UPDATE POPULATION TO", String.valueOf(currentPopulation));
 			}
 		};
 	}
@@ -105,7 +122,9 @@ public class GameLogic {
 			@Override
 			public void run() {
 				date.set(Calendar.DAY_OF_MONTH, date.get(Calendar.DAY_OF_MONTH) + 1);
-				Log.d("UPDATE DATE TO", date.toString());
+				setChanged();
+				notifyObservers();
+				Log.i("UPDATE DATE TO", date.toString());
 			}
 		};
 	}
