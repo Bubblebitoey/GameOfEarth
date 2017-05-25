@@ -26,16 +26,6 @@ public class Question implements DatabaseSavable {
 		static_id++;
 	}
 	
-	public Question setAccept(Resource accept) {
-		this.accept = accept;
-		return this;
-	}
-	
-	public Question setDeny(Resource deny) {
-		this.deny = deny;
-		return this;
-	}
-	
 	public long getId() {
 		return id;
 	}
@@ -59,9 +49,52 @@ public class Question implements DatabaseSavable {
 	@Override
 	public ContentValues getInsertQuery() {
 		ContentValues values = new ContentValues(3);
-		values.put(DatabaseColumns.ID.getDatabaseKey(), getId());
-		values.put(DatabaseColumns.Q_TITLE.getDatabaseKey(), getName());
-		values.put(DatabaseColumns.Q_DESCRIPTION.getDatabaseKey(), getDescription());
+		values.put(DatabaseColumns.ID.key(), getId());
+		values.put(DatabaseColumns.Q_TITLE.key(), getName());
+		values.put(DatabaseColumns.Q_DESCRIPTION.key(), getDescription());
 		return values;
+	}
+	
+	public static class Builder {
+		private long id;
+		private String name;
+		private String description;
+		
+		private Resource accept;
+		private Resource deny;
+		
+		public Builder(long id) {
+			this.id = id;
+			if (static_id < id) static_id = id;
+		}
+		
+		public Builder setName(String name) {
+			this.name = name;
+			return this;
+		}
+		
+		public Builder setDescription(String description) {
+			this.description = description;
+			return this;
+		}
+		
+		public Builder setAccept(Resource accept) {
+			this.accept = accept;
+			return this;
+		}
+		
+		public Builder setDeny(Resource deny) {
+			this.deny = deny;
+			return this;
+		}
+		
+		
+		public Question build() {
+			Question q = new Question(name, description);
+			q.id = this.id;
+			q.accept = this.accept;
+			q.deny = this.deny;
+			return q;
+		}
 	}
 }
