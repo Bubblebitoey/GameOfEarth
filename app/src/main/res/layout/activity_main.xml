@@ -13,14 +13,14 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginTop="50dp"
-        app:srcCompat="@drawable/co2bar" />
+        android:src="@drawable/co2bar" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginTop="0dp"
-        app:srcCompat="@drawable/pplbar" />
+        android:src="@drawable/pplbar" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -28,7 +28,7 @@
         android:layout_height="300dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="70dp"
-        app:srcCompat="@drawable/city" />
+        android:src="@drawable/city" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,7 +42,7 @@
 
             android:layout_marginLeft="0dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/lender_2" />
+            android:src="@drawable/lender_2" />
 
         <ImageView
             android:id="@+id/lender_2"
@@ -51,7 +51,7 @@
             android:layout_marginLeft="0dp"
             android:layout_marginTop="0dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/lender_3" />
+            android:src="@drawable/lender_3" />
 
         <ImageView
             android:id="@+id/lender3"
@@ -60,7 +60,7 @@
             android:layout_marginLeft="0dp"
             android:layout_marginTop="0dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/lender_1" />
+            android:src="@drawable/lender_1" />
     </LinearLayout>
 
 
