@@ -10,6 +10,8 @@ android {
         versionCode 48
         versionName "1.0.0-beta"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        archivesBaseName = "$project.ext.appName-$versionName($versionCode)"
     }
     buildTypes {
         release {
