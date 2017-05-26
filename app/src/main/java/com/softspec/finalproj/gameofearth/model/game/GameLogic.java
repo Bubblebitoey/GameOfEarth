@@ -31,21 +31,23 @@ public class GameLogic extends Observable implements Serializable {
 	public static long serialVersionUID = 1L;
 	public static String SHOW_QUESTION = "show_question";
 	
-	private static final long UPDATE_POPULATION_MILLISECOND = 350; // 0.35 second
+	private static final long UPDATE_POPULATION_MILLISECOND = 250; // 0.5 second
 	
 	/**
 	 * {@value UPDATE_DATE_MILLISECOND} millisecond = 1 day
 	 */
-	private static final long UPDATE_DATE_MILLISECOND = 2_000; // 2 second
+	private static final long UPDATE_DATE_MILLISECOND = 3_000; // 3 second
 	
 	private static final long SHOW_QUESTION_MILLISECOND = 10_000; // 10 second
 	
-	private static final ScheduledExecutorService runService = Executors.newScheduledThreadPool(20);
+	private static final ScheduledExecutorService runService = Executors.newSingleThreadScheduledExecutor();
 	
 	private GameStrategy gameStrategy;
 	private CityStrategy cityStrategy;
 	private CO2Strategy co2Strategy;
 	private PopulationStrategy populationStrategy;
+	
+	private long highestPopulation;
 	
 	/**
 	 * current population
@@ -76,6 +78,8 @@ public class GameLogic extends Observable implements Serializable {
 		this.populationStrategy = populationStrategy;
 		
 		currentPopulation = 100;
+		setHighestPopulation();
+		
 		co2 = gameStrategy.getDefaultCO2();
 		population = gameStrategy.getDefaultPopulation();
 		date = gameStrategy.getDefaultDate();
@@ -84,6 +88,14 @@ public class GameLogic extends Observable implements Serializable {
 		
 		databaseManagement = management;
 		imageManagement = new ImageManagement(c, this);
+	}
+	
+	private void setHighestPopulation() {
+		if (highestPopulation < currentPopulation) highestPopulation = currentPopulation;
+	}
+	
+	public long getHighestPopulation() {
+		return highestPopulation;
 	}
 	
 	public long getCurrentPopulation() {
@@ -133,7 +145,7 @@ public class GameLogic extends Observable implements Serializable {
 		addPopulation(pop);
 		updateCO2(co2);
 		
-		Log.i(LogConstants.Action.UPDATE, "population: " + population + ", co2: " + co2);
+		// Log.i(LogConstants.Action.UPDATE, "population: " + population + ", co2: " + co2);
 	}
 	
 	public void setLightClick(LightBulb lightBulb) {
@@ -173,7 +185,7 @@ public class GameLogic extends Observable implements Serializable {
 	}
 	
 	public void stopGame() {
-		runService.shutdownNow();
+		runService.shutdown();
 	}
 	
 	public boolean isGameOver() {
@@ -183,7 +195,6 @@ public class GameLogic extends Observable implements Serializable {
 	@Override
 	public synchronized void addObserver(Observer o) {
 		super.addObserver(o);
-		Log.d(LogConstants.Object.OBSERVER, o.getClass().toString());
 	}
 	
 	private Runnable getUpdatePopTask() {
@@ -195,14 +206,15 @@ public class GameLogic extends Observable implements Serializable {
 				// update pop
 				currentPopulation += add;
 				currentPopulation -= decrease1;
+				setHighestPopulation();
 				
 				// update co2, population
 				updateCO2((long) Math.ceil(co2Strategy.calculationFromCurrentPopulation(currentPopulation).percent()));
 				removePopulation(populationStrategy.calculationToThis(co2));
 				
 				// log
-				Log.i(LogConstants.Action.UPDATE, "population: " + population + ", co2: " + co2);
-				Log.i(LogConstants.Other.CURRENT_INFORMATION, "(POPULATION) ADD: " + add + ", SUB1: " + decrease1 + ", RESULT: " + String.valueOf(currentPopulation));
+				// Log.i(LogConstants.Action.UPDATE, "population: " + population + ", co2: " + co2);
+				// Log.i(LogConstants.Other.CURRENT_INFORMATION, "(POPULATION) ADD: " + add + ", SUB1: " + decrease1 + ", RESULT: " + String.valueOf(currentPopulation));
 				
 				// notify observer
 				setChanged();
@@ -216,7 +228,7 @@ public class GameLogic extends Observable implements Serializable {
 			@Override
 			public void run() {
 				date.set(Calendar.DAY_OF_MONTH, date.get(Calendar.DAY_OF_MONTH) + 1);
-				Log.i(LogConstants.Action.UPDATE, "Date: " + String.valueOf(getDate()));
+				// Log.i(LogConstants.Action.UPDATE, "Date: " + String.valueOf(getDate()));
 				
 				setChanged();
 				notifyObservers();
