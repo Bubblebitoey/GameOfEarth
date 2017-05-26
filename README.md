@@ -35,6 +35,7 @@ We use Design Pattern
 1. Project description - [here](project_resource)
 2. APK file - [here](production/release/GameOfEarth-1.0.0-beta(50)-release.apk)
 3. Code association (JSON) - [here](codeiris/model_associate.json)
+4. Game Screenshot - [here](game_screen_shot)
 
 # Code Explanation
 
