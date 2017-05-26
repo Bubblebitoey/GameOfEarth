@@ -59,10 +59,10 @@ public class Creator {
 		addQuestion("Expand airport", "Our airport has reached maximum capacity. let's build a new runway?", 300, 28, 0, -20);
 		addQuestion("Blackhole Disposal", "Let's create an artificial black hole to dispose of all our waste! It's going to be really really expensive, and vey very dangerous.", -600, -10, 500, 10);
 		addQuestion("New security fee", "Tight security at airport is discouraging tourists. Allow wealthy tourists to bypass security for a small fee?", 422, 15, -582, -16);
-		addQuestion("Energy Production Cap", "Our energy companies are extracting more natural resources than we need. Put a production cap on how much they can extract every year?", -80, 0, 0, 100);
-		addQuestion("Tighten boarder security", "With increasing tourists, terrorists can easily slip into our country, we need jail any suspicious personal first before questioning!", -130, -2, 180, 1);
-		addQuestion("Give Worker Raise", "The oil workers are planning a strike due to low pay. Increase their salary subsidies?", 100, 0, -100, 0);
-		addQuestion("Illegal Hospital Waste", "A hospital was found discharging medical waste illegaly. Close down the hospital?", -102, -1, 201, 3);
+		addQuestion("Energy Production Cap", "Our energy companies are extracting more natural resources than we need. Put a production cap on how much they can extract every year?", -800, 0, 0, 50);
+		addQuestion("Tighten boarder security", "With increasing tourists, terrorists can easily slip into our country, we need jail any suspicious personal first before questioning!", -632, -20, 560, 40);
+		addQuestion("Give Worker Raise", "The oil workers are planning a strike due to low pay. Increase their salary subsidies?", 300, 0, -400, 0);
+		addQuestion("Illegal Hospital Waste", "A hospital was found discharging medical waste illegaly. Close down the hospital?", -400, -20, 380, 30);
 		addQuestion("Print Money", "Our government loans are getting bigger every year. Cut a forest to print lots of money so we can pay off the debt?", 110, 0, -120, 0);
 		addQuestion("Parenting License", "Parenting requires real knowledge. To act on rising child abandonment, we must make all parents pay for a license before having a child?", 0, -1, 0, 4);
 		addQuestion("Post-Disaster", "Our airport was destroyed by the tornado. Repair the damaged airport?", 100, 2, 0, -4);
