@@ -29,4 +29,13 @@ We use Design Pattern
 - Pure Fabrication Principle
 - Indirection Principle
 
+# Files
+1. Project description - [here](project_resource)
+2. APK file - [here](production/release/GameOfEarth-1.0.0-beta(48)-release.apk)
+3. Code association (JSON) - [here](codeiris/model_associate.json)
+
+# Code Explanation
+1. 
+
+
 ----------------------------------------------------------------------------------------
