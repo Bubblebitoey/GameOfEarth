@@ -14,4 +14,7 @@
     <string name="ok">OK</string>
     <string name="default_int_value">0</string>
     <string name="current_population">current population</string>
+    <string name="light_bulb_for_leader_1">light bulb for leader 1</string>
+    <string name="light_bulb_for_leader_2">light bulb for leader 2</string>
+    <string name="light_bulb_for_leader_3">light bulb for leader 3</string>
 </resources>

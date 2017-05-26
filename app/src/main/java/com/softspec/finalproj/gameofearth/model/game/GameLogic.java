@@ -29,12 +29,12 @@ public class GameLogic extends Observable implements Serializable {
 	public static long serialVersionUID = 1L;
 	public static String SHOW_QUESTION = "show_question";
 	
-	private static final long UPDATE_POPULATION_SECOND = 5;
+	private static final long UPDATE_POPULATION_SECOND = 3;
 	
 	/**
 	 * {@value UPDATE_DATE_SECOND} second = 1 day
 	 */
-	private static final long UPDATE_DATE_SECOND = 15;
+	private static final long UPDATE_DATE_SECOND = 20;
 	
 	private static final long SHOW_QUESTION_SECOND = 25;
 	

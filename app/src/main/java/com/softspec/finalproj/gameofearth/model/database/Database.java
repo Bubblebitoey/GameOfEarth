@@ -122,7 +122,7 @@ public class Database extends SQLiteOpenHelper implements Serializable {
 	
 	public boolean isExist(Context context) {
 		File f = context.getDatabasePath(DATABASE_NAME);
-		Log.d(LogConstants.Object.DATABASE, f.exists() ? "exist": "not exist");
+		Log.i(LogConstants.Object.DATABASE, f.exists() ? "exist": "not exist");
 		return f.exists();
 	}
 }
