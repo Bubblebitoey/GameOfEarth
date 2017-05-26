@@ -15,7 +15,7 @@ import java.util.*;
  * Created by bubblebitoey on 5/26/2017 AD.
  */
 
-public class EndActivity extends FullScreenActivity implements Observer{
+public class EndActivity extends FullScreenActivity implements Observer {
 	
 	private GameLogic gameLogic;
 	private ImageButton playAgainBtn;
@@ -36,8 +36,6 @@ public class EndActivity extends FullScreenActivity implements Observer{
 				startActivity(intent);
 			}
 		});
-		
-		
 	}
 	
 	@Override

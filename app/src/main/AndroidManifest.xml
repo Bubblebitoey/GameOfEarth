@@ -18,6 +18,9 @@
         </activity>
         <activity android:name=".view.MainActivity">
         </activity>
+        <activity android:name=".view.StartActivity">
+        </activity>
+        <activity android:name=".view.EndActivity">
+        </activity>
     </application>
-
 </manifest>
