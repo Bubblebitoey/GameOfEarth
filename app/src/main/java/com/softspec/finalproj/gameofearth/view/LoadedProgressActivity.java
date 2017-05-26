@@ -13,6 +13,7 @@ public class LoadedProgressActivity extends FullScreenActivity implements Observ
 	public static final String DATABASE_MANAGEMENT = "database_management";
 	private AnimatedCircleLoadingView progressBar;
 	private DatabaseManagement management;
+	private StartActivity startActivity;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -12,6 +12,8 @@
     <string name="result_accept">New Policy Accepted</string>
     <string name="result_deny">New Policy Denied!</string>
     <string name="ok">OK</string>
+    <string name="play_again">"Play Again"</string>
+
     <string name="default_int_value">0</string>
     <string name="current_population">current population</string>
     <string name="light_bulb_for_leader_1">light bulb for leader 1</string>
