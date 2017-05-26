@@ -157,7 +157,6 @@ public class MainActivity extends FullScreenActivity implements Observer {
 	}
 	
 	public void setLightEnabled(boolean enabled, LightBulb... lights) {
-		// Comment: I can't can findViewById multiple times here, If do that will cause unexpected result
 		for (LightBulb l : lights) {
 			setImageBtnEnabled(enabled, (ImageButton) findViewById(l.getID()));
 		}
