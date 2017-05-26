@@ -88,7 +88,7 @@ public class QuestionDialog implements Showable {
 	}
 	
 	private void build() {
-		materialDialog = builder.build();
+		materialDialog = builder.cancelable(false).build();
 	}
 	
 	@Override

@@ -85,7 +85,7 @@ public class ResultDialog extends Observable implements Showable {
 	
 	public void build() {
 		try {
-			materialDialog = builder.build();
+			materialDialog = builder.canceledOnTouchOutside(true).build();
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}

@@ -12,13 +12,7 @@ import com.softspec.finalproj.gameofearth.model.game.GameLogic;
 /**
  * Created by bubblebitoey on 5/26/2017 AD.
  */
-
-<<<<<<< HEAD
-public class EndActivity extends FullScreenActivity{
-=======
-public class EndActivity extends FullScreenActivity implements Observer {
->>>>>>> 087581a418ffc180e80b80b6964548ffec5db9df
-	
+public class EndActivity extends FullScreenActivity {
 	private GameLogic gameLogic;
 	private ImageButton playAgainBtn;
 	private TextView scoreTxt;
@@ -27,6 +21,8 @@ public class EndActivity extends FullScreenActivity implements Observer {
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_end);
+		
+		gameLogic = (GameLogic) getIntent().getSerializableExtra(LoadedProgressActivity.GAME_LOGIC);
 		
 		playAgainBtn = (ImageButton) findViewById(R.id.playAgain_button);
 		scoreTxt = (TextView) findViewById(R.id.txtScore);
@@ -38,13 +34,5 @@ public class EndActivity extends FullScreenActivity implements Observer {
 				startActivity(intent);
 			}
 		});
-<<<<<<< HEAD
-=======
-	}
-	
-	@Override
-	public void update(Observable o, Object arg) {
-	
->>>>>>> 087581a418ffc180e80b80b6964548ffec5db9df
 	}
 }
