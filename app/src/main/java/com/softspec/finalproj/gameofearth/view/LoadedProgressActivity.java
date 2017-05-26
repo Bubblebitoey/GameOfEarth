@@ -15,6 +15,7 @@ public class LoadedProgressActivity extends FullScreenActivity implements Observ
 	private AnimatedCircleLoadingView progressBar;
 	private DatabaseManagement management;
 	private StartActivity startActivity;
+	private MainActivity mainActivity;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +44,11 @@ public class LoadedProgressActivity extends FullScreenActivity implements Observ
 			Progress progress = (Progress) o;
 			if (progress.isComplete()) {
 				progressBar.stopOk();
+				startActivity(mainActivity.getIntent());
+				System.out.println("Is in if progress.isComplete()");
 			}
 		}
 		progressBar.stopOk();
+		System.out.println("Is not if progress.isComplete()");
 	}
 }
