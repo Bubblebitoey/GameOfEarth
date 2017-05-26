@@ -1,11 +1,16 @@
 package com.softspec.finalproj.gameofearth.view;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.softspec.finalproj.gameofearth.R;
+import com.softspec.finalproj.gameofearth.api.constants.LightBulb;
 import com.softspec.finalproj.gameofearth.api.constants.LogConstants;
 import com.softspec.finalproj.gameofearth.api.management.DatabaseManagement;
 import com.softspec.finalproj.gameofearth.api.uidialog.QuestionDialog;
@@ -27,8 +32,21 @@ public class MainActivity extends FullScreenActivity implements Observer {
 	private TextView co2TextView;
 	private TextView dateTextView;
 	
+	private ImageButton light1;
+	private ImageButton light2;
+	private ImageButton light3;
 	
 	private QuestionDialog questionDialog;
+	
+	private View.OnClickListener lightClick = new View.OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			Log.i(LogConstants.Action.CLICK, ((ImageButton) v).getContentDescription().toString());
+			logic.setLightClick(LightBulb.find(v.getId()));
+			setLightEnabled(false, LightBulb.values());
+			showQuestion();
+		}
+	};
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +59,14 @@ public class MainActivity extends FullScreenActivity implements Observer {
 		popTextView = (TextView) findViewById(R.id.population_text);
 		co2TextView = (TextView) findViewById(R.id.carbon_text);
 		dateTextView = (TextView) findViewById(R.id.calendar_text);
+		
+		light1 = (ImageButton) findViewById(R.id.light_bulb_1);
+		light1.setOnClickListener(lightClick);
+		light2 = (ImageButton) findViewById(R.id.light_bulb_2);
+		light2.setOnClickListener(lightClick);
+		light3 = (ImageButton) findViewById(R.id.light_bulb_3);
+		light3.setOnClickListener(lightClick);
+		setLightEnabled(false, LightBulb.values());
 		
 		DatabaseManagement management = (DatabaseManagement) getIntent().getSerializableExtra(LoadedProgressActivity.DATABASE_MANAGEMENT);
 		logic = new GameLogic(this, management.reload(this), new DefaultGameStrategy(), new DefaultCityStrategy(), new DefaultCO2Strategy(), new DefaultPopulationStrategy());
@@ -58,9 +84,13 @@ public class MainActivity extends FullScreenActivity implements Observer {
 				setCity(logic.getDefaultCity());
 				logic.stopGame();
 			} else if (o instanceof String && o.toString().equals(GameLogic.SHOW_QUESTION)) {
-				showQuestion();
+				if (!LightBulb.haveQuestionLight(this) && !questionDialog.isShown()) {
+					Log.i(LogConstants.Action.LIGHT, "Question");
+					setLightEnabled(true, logic.getLightLight());
+				} else {
+					Log.i(LogConstants.Action.NO_LIGHT, "Already Light");
+				}
 			} else {
-				Log.i(LogConstants.Action.UPDATE, "City Image");
 				setCity(logic.getCity());
 			}
 		}
@@ -113,5 +143,36 @@ public class MainActivity extends FullScreenActivity implements Observer {
 				}
 			}
 		});
+	}
+	
+	public void setLightEnabled(boolean enabled, LightBulb... lights) {
+		// Comment: I can't can findViewById multiple times here, If do that will cause unexpected result
+		for (LightBulb l : lights) {
+			setImageBtnEnabled(enabled, (ImageButton) findViewById(l.getID()));
+		}
+	}
+	
+	public void setImageBtnEnabled(boolean enabled, ImageButton btn) {
+		btn.setEnabled(enabled);
+		Drawable originalIcon = getResources().getDrawable(R.drawable.light_bulb);
+		Drawable icon = enabled ? originalIcon: convertDrawableToGrayScale(originalIcon);
+		btn.setImageDrawable(icon);
+	}
+	
+	/**
+	 * Mutates and applies a filter that converts the given drawable to a Gray
+	 * image. This method may be used to simulate the color of disable icons in
+	 * Honeycomb's ActionBar.
+	 *
+	 * @return a mutated version of the given drawable with a color filter
+	 * applied.
+	 */
+	public Drawable convertDrawableToGrayScale(Drawable drawable) {
+		if (drawable == null) {
+			return null;
+		}
+		Drawable res = drawable.mutate();
+		res.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
+		return res;
 	}
 }

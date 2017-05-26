@@ -3,10 +3,12 @@ package com.softspec.finalproj.gameofearth.model.game;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
+import com.softspec.finalproj.gameofearth.api.constants.LightBulb;
 import com.softspec.finalproj.gameofearth.api.constants.LogConstants;
 import com.softspec.finalproj.gameofearth.api.datastructure.Percent;
 import com.softspec.finalproj.gameofearth.api.management.DatabaseManagement;
 import com.softspec.finalproj.gameofearth.api.management.ImageManagement;
+import com.softspec.finalproj.gameofearth.api.management.Leader;
 import com.softspec.finalproj.gameofearth.model.question.Question;
 import com.softspec.finalproj.gameofearth.model.resource.Resource;
 import com.softspec.finalproj.gameofearth.model.strategy.CO2Strategy;
@@ -29,14 +31,14 @@ public class GameLogic extends Observable implements Serializable {
 	public static long serialVersionUID = 1L;
 	public static String SHOW_QUESTION = "show_question";
 	
-	private static final long UPDATE_POPULATION_SECOND = 3;
+	private static final long UPDATE_POPULATION_MILLISECOND = 350; // 0.35 second
 	
 	/**
-	 * {@value UPDATE_DATE_SECOND} second = 1 day
+	 * {@value UPDATE_DATE_MILLISECOND} millisecond = 1 day
 	 */
-	private static final long UPDATE_DATE_SECOND = 20;
+	private static final long UPDATE_DATE_MILLISECOND = 2_000; // 2 second
 	
-	private static final long SHOW_QUESTION_SECOND = 25;
+	private static final long SHOW_QUESTION_MILLISECOND = 10_000; // 10 second
 	
 	private static final ScheduledExecutorService runService = Executors.newScheduledThreadPool(20);
 	
@@ -57,11 +59,12 @@ public class GameLogic extends Observable implements Serializable {
 	 * percent of increasing population (per 5 second)
 	 */
 	private Percent population;
-	
 	/**
 	 * current date
 	 */
 	private Calendar date;
+	
+	private Leader leader;
 	
 	private DatabaseManagement databaseManagement;
 	private ImageManagement imageManagement;
@@ -76,6 +79,8 @@ public class GameLogic extends Observable implements Serializable {
 		co2 = gameStrategy.getDefaultCO2();
 		population = gameStrategy.getDefaultPopulation();
 		date = gameStrategy.getDefaultDate();
+		
+		leader = new Leader();
 		
 		databaseManagement = management;
 		imageManagement = new ImageManagement(c, this);
@@ -131,6 +136,10 @@ public class GameLogic extends Observable implements Serializable {
 		Log.i(LogConstants.Action.UPDATE, "population: " + population + ", co2: " + co2);
 	}
 	
+	public void setLightClick(LightBulb lightBulb) {
+		leader.setCurrent(lightBulb);
+	}
+	
 	public Drawable getCity() {
 		return imageManagement.getCity();
 	}
@@ -148,15 +157,19 @@ public class GameLogic extends Observable implements Serializable {
 		return date.get(Calendar.DAY_OF_YEAR) + (365 * (date.get(Calendar.YEAR) - gameStrategy.getDefaultDate().get(Calendar.YEAR)));
 	}
 	
+	public LightBulb[] getLightLight() {
+		return leader.next();
+	}
+	
 	public Question randomQuestion() {
 		return databaseManagement.randomQuestion();
 	}
 	
 	public void startGame() {
 		Log.i(LogConstants.Object.GAME, "START");
-		runService.scheduleWithFixedDelay(getUpdatePopTask(), UPDATE_POPULATION_SECOND, UPDATE_POPULATION_SECOND, TimeUnit.SECONDS);
-		runService.scheduleWithFixedDelay(getUpdateDateTask(), UPDATE_DATE_SECOND, UPDATE_DATE_SECOND, TimeUnit.SECONDS);
-		runService.scheduleWithFixedDelay(getShowQuestionTask(), SHOW_QUESTION_SECOND, SHOW_QUESTION_SECOND, TimeUnit.SECONDS);
+		runService.scheduleWithFixedDelay(getUpdatePopTask(), UPDATE_POPULATION_MILLISECOND, UPDATE_POPULATION_MILLISECOND, TimeUnit.MILLISECONDS);
+		runService.scheduleWithFixedDelay(getUpdateDateTask(), UPDATE_DATE_MILLISECOND, UPDATE_DATE_MILLISECOND, TimeUnit.MILLISECONDS);
+		runService.scheduleWithFixedDelay(getShowQuestionTask(), SHOW_QUESTION_MILLISECOND, SHOW_QUESTION_MILLISECOND, TimeUnit.MILLISECONDS);
 	}
 	
 	public void stopGame() {

@@ -171,7 +171,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginStart="20dp"
-                        android:visibility="invisible"
                         android:src="@drawable/light_bulb"
                         android:background="@android:color/transparent"
                         android:contentDescription="@string/light_bulb_for_leader_1"/>
@@ -203,7 +202,6 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginStart="20dp"
                         android:src="@drawable/light_bulb"
-                        android:visibility="invisible"
                         android:background="@android:color/transparent"
                         android:contentDescription="@string/light_bulb_for_leader_2"/>
             </FrameLayout>
@@ -231,7 +229,6 @@
                         android:src="@drawable/light_bulb"
                         android:layout_marginLeft="20dp"
                         android:layout_marginStart="20dp"
-                        android:visibility="invisible"
                         android:background="@android:color/transparent"
                         android:contentDescription="@string/light_bulb_for_leader_3"/>
 

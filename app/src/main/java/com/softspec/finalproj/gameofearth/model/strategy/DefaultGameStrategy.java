@@ -32,7 +32,7 @@ public class DefaultGameStrategy implements GameStrategy {
 	@Override
 	public boolean gameOver(long... data) {
 		for (long d : data) {
-			if (d < 0) return true;
+			if (d <= 0) return true;
 		}
 		return false;
 	}

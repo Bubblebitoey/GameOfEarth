@@ -15,11 +15,15 @@ public class LogConstants {
 	}
 	
 	public static class Action {
+		public static final String CLICK = "Click";
 		public static final String OPEN = "Open";
 		public static final String SHOW = "Show";
 		public static final String NO_SHOW = "No_show";
 		public static final String UPDATE = "Update";
 		public static final String NO_UPDATE = "No_update";
+		public static final String LIGHT = "Light";
+		public static final String NO_LIGHT = "No_light";
+		
 	}
 	
 	public static class Other {

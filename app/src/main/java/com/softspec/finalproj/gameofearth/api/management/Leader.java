@@ -1,6 +1,6 @@
 package com.softspec.finalproj.gameofearth.api.management;
 
-import android.support.annotation.IdRes;
+import com.softspec.finalproj.gameofearth.api.constants.LightBulb;
 
 /**
  * @author kamontat
@@ -10,23 +10,23 @@ import android.support.annotation.IdRes;
 public class Leader {
 	public static final int ALL_LEADER = 3;
 	
-	private int current;
+	private LightBulb current;
 	
-	public Leader() {
-		current = 0;
+	public void setCurrent(LightBulb current) {
+		this.current = current;
 	}
 	
-	@IdRes
-	public int[] next() {
+	public LightBulb[] next() {
+		if (current == null) return new LightBulb[]{LightBulb.BULB_1, LightBulb.BULB_2, LightBulb.BULB_3};
 		switch (current) {
-			case 1:
-				return new int[]{2, 3};
-			case 2:
-				return new int[]{1, 3};
-			case 3:
-				return new int[]{1, 2};
+			case BULB_1:
+				return new LightBulb[]{LightBulb.BULB_2, LightBulb.BULB_3};
+			case BULB_2:
+				return new LightBulb[]{LightBulb.BULB_1, LightBulb.BULB_3};
+			case BULB_3:
+				return new LightBulb[]{LightBulb.BULB_1, LightBulb.BULB_2};
 			default:
-				return new int[]{1, 2, 3};
+				return new LightBulb[]{LightBulb.BULB_1, LightBulb.BULB_2, LightBulb.BULB_3};
 		}
 	}
 }

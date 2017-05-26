@@ -2,7 +2,7 @@ package com.softspec.finalproj.gameofearth.api.constants;
 
 import android.app.Activity;
 import android.support.annotation.IdRes;
-import android.view.View;
+import android.support.annotation.Nullable;
 import com.softspec.finalproj.gameofearth.R;
 
 /**
@@ -22,16 +22,13 @@ public enum LightBulb {
 		this.id = id;
 	}
 	
-	public void show(Activity activity) {
-		activity.findViewById(id).setVisibility(View.VISIBLE);
-	}
-	
-	public void hide(Activity activity) {
-		activity.findViewById(id).setVisibility(View.INVISIBLE);
+	@IdRes
+	public int getID() {
+		return id;
 	}
 	
 	public boolean isShow(Activity activity) {
-		return activity.findViewById(id).getVisibility() == View.VISIBLE;
+		return activity.findViewById(id).isEnabled();
 	}
 	
 	public static boolean haveQuestionLight(Activity activity) {
@@ -39,5 +36,13 @@ public enum LightBulb {
 			if (l.isShow(activity)) return true;
 		}
 		return false;
+	}
+	
+	@Nullable
+	public static LightBulb find(@IdRes int id) {
+		for (LightBulb l : values()) {
+			if (l.getID() == id) return l;
+		}
+		return null;
 	}
 }
