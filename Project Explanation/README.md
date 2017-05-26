@@ -1,4 +1,4 @@
-README
+# Game Of Earth
  - This Game Should run in Pixel or Nexus 6 .
 ----------------------------------------------------------------------------------------
 # Creator
