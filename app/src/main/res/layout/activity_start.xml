@@ -8,24 +8,25 @@
 
 
     <pl.droidsonroids.gif.GifImageView
-                    android:id="@+id/Welcome"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginBottom="0dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:src="@drawable/welcome_banner"
-                    android:background="@android:color/transparent"/>
+            android:id="@+id/Welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/welcome_banner"
+            android:background="@android:color/transparent"/>
+
     <ImageButton
-                android:id="@+id/start_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:src="@drawable/button"
-                android:layout_alignParentBottom="true"
-                android:background="@android:color/transparent"
-                       />
+            android:id="@+id/start_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/button"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/transparent"
+            />
 
 </LinearLayout>

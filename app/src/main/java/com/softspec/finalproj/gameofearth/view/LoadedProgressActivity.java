@@ -26,7 +26,7 @@ public class LoadedProgressActivity extends FullScreenActivity implements Observ
 		progressBar.setAnimationListener(new AnimatedCircleLoadingView.AnimationListener() {
 			@Override
 			public void onAnimationEnd(boolean b) {
-				Intent intent = new Intent(LoadedProgressActivity.this, MainActivity.class);
+				Intent intent = new Intent(LoadedProgressActivity.this, StartActivity.class);
 				intent.putExtra(DATABASE_MANAGEMENT, management);
 				startActivity(intent);
 			}

@@ -197,7 +197,7 @@ public class GameLogic extends Observable implements Serializable {
 				currentPopulation -= decrease1;
 				
 				// update co2, population
-				updateCO2((long) Math.ceil(co2Strategy.calculationFromPopulation(currentPopulation).percent()));
+				updateCO2((long) Math.ceil(co2Strategy.calculationFromCurrentPopulation(currentPopulation).percent()));
 				removePopulation(populationStrategy.calculationToThis(co2));
 				
 				// log
