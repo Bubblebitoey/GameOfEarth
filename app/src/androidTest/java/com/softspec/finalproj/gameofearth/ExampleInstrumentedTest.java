@@ -1,4 +1,4 @@
-package com.bubblebitoey.gameofearth;
+package com.softspec.finalproj.gameofearth;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
