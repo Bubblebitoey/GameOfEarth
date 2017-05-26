@@ -1,5 +1,7 @@
 # Game Of Earth
- - This Game Should run in Pixel or Nexus 6 .
+*The most efficiently support is `Pixel` with `Android O`*
+ - This game may crash when run in Android API 23, 24, 25.
+ - This game efficiently support Device screen around `5.0`.
  
 # Creator
 |Name|Duty|

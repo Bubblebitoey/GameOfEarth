@@ -45,10 +45,8 @@ public class LoadedProgressActivity extends FullScreenActivity implements Observ
 			if (progress.isComplete()) {
 				progressBar.stopOk();
 				startActivity(mainActivity.getIntent());
-				System.out.println("Is in if progress.isComplete()");
 			}
 		}
 		progressBar.stopOk();
-		System.out.println("Is not if progress.isComplete()");
 	}
 }
