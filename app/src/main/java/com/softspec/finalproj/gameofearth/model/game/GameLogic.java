@@ -31,14 +31,14 @@ public class GameLogic extends Observable implements Serializable {
 	public static long serialVersionUID = 1L;
 	public static String SHOW_QUESTION = "show_question";
 	
-	private static final long UPDATE_POPULATION_MILLISECOND = 250; // 0.5 second
+	private static final long UPDATE_POPULATION_MILLISECOND = 500; // 0.5 second
 	
 	/**
 	 * {@value UPDATE_DATE_MILLISECOND} millisecond = 1 day
 	 */
-	private static final long UPDATE_DATE_MILLISECOND = 3_000; // 3 second
+	private static final long UPDATE_DATE_MILLISECOND = 2_125; // 2.125 second
 	
-	private static final long SHOW_QUESTION_MILLISECOND = 10_000; // 10 second
+	private static final long SHOW_QUESTION_MILLISECOND = 5_000; // 5 second
 	
 	private static final ScheduledExecutorService runService = Executors.newSingleThreadScheduledExecutor();
 	
