@@ -26,6 +26,7 @@ import java.util.*;
 
 public class MainActivity extends FullScreenActivity implements Observer {
 	private static GameLogic logic;
+	private EndActivity endActivity;
 	private ImageView city;
 	private TextView currentPopTextView;
 	private TextView popTextView;

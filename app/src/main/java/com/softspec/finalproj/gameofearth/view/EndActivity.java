@@ -9,13 +9,11 @@ import android.widget.TextView;
 import com.softspec.finalproj.gameofearth.R;
 import com.softspec.finalproj.gameofearth.model.game.GameLogic;
 
-import java.util.*;
-
 /**
  * Created by bubblebitoey on 5/26/2017 AD.
  */
 
-public class EndActivity extends FullScreenActivity implements Observer{
+public class EndActivity extends FullScreenActivity{
 	
 	private GameLogic gameLogic;
 	private ImageButton playAgainBtn;
@@ -36,12 +34,5 @@ public class EndActivity extends FullScreenActivity implements Observer{
 				startActivity(intent);
 			}
 		});
-		
-		
-	}
-	
-	@Override
-	public void update(Observable o, Object arg) {
-	
 	}
 }

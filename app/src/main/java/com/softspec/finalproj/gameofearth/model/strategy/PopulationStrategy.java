@@ -27,4 +27,7 @@ public interface PopulationStrategy extends Serializable {
 	 * @return percent to decreasing population
 	 */
 	Percent calculationToThis(long co2);
+	
+	//percent -> population
+	//people -> current pop
 }
