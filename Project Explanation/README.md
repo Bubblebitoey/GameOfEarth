@@ -1,7 +1,7 @@
 README
  - This Game Should run in Pixel or Nexus 6 .
 ----------------------------------------------------------------------------------------
-* Creator
+# Creator
   - Kamontat Chantrachirathumrong 5810546552
     Duty : Database ,  Game algorithm , fully dressed use case , UML class diagram
   - Soraya Sanna 5810546056
@@ -9,7 +9,7 @@ README
   - Thanawan Sean-in
     Duty : Main activity , Material UI , fully dressed use case , UML class diagram
 ---------------------------------------------------------------------------------------
-* Design Pattern
+# Design Pattern
       We use Design Pattern
   - Observer Pattern —> main activity (Observer), GameLogic (Observer), ResultDialog (Observer)
   - Null Object Pattern —> Resource Object
@@ -17,7 +17,7 @@ README
   - Singleton pattern —> Database, Question Dialog, Result Dialog
   - Builder -> Question, Resource, Dialog
 ----------------------------------------------------------------------------------------
-* Design Principle
+# Design Principle
       We create this game along with
         SOLID principle
   - Single Responsibility Principle
