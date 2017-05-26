@@ -11,6 +11,7 @@ import java.util.*;
 
 public class LoadedProgressActivity extends FullScreenActivity implements Observer {
 	public static final String DATABASE_MANAGEMENT = "database_management";
+	public static final String GAME_LOGIC = "game_logic";
 	private AnimatedCircleLoadingView progressBar;
 	private DatabaseManagement management;
 	private StartActivity startActivity;

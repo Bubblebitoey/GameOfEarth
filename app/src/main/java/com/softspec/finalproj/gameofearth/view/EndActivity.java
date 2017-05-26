@@ -9,14 +9,10 @@ import android.widget.TextView;
 import com.softspec.finalproj.gameofearth.R;
 import com.softspec.finalproj.gameofearth.model.game.GameLogic;
 
-import java.util.*;
-
 /**
  * Created by bubblebitoey on 5/26/2017 AD.
  */
-
-public class EndActivity extends FullScreenActivity implements Observer {
-	
+public class EndActivity extends FullScreenActivity {
 	private GameLogic gameLogic;
 	private ImageButton playAgainBtn;
 	private TextView scoreTxt;
@@ -25,6 +21,8 @@ public class EndActivity extends FullScreenActivity implements Observer {
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_end);
+		
+		gameLogic = (GameLogic) getIntent().getSerializableExtra(LoadedProgressActivity.GAME_LOGIC);
 		
 		playAgainBtn = (ImageButton) findViewById(R.id.playAgain_button);
 		scoreTxt = (TextView) findViewById(R.id.txtScore);
@@ -36,10 +34,5 @@ public class EndActivity extends FullScreenActivity implements Observer {
 				startActivity(intent);
 			}
 		});
-	}
-	
-	@Override
-	public void update(Observable o, Object arg) {
-	
 	}
 }
