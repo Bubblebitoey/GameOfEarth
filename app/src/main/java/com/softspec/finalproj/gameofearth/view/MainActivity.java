@@ -95,9 +95,7 @@ public class MainActivity extends FullScreenActivity implements Observer {
 				logic.stopGame();
 				// FIXME: 5/26/2017 AD no start end activity
 				Intent intent = new Intent(MainActivity.this, EndActivity.class);
-				Log.d("DEBUG", "CREATE INTENT");
 				intent.putExtra(GAME_LOGIC, logic);
-				Log.d("DEBUG", "PUT DATA");
 				startActivity(intent);
 			} else if (o instanceof String && o.toString().equals(GameLogic.SHOW_QUESTION)) {
 				if (!LightBulb.haveQuestionLight(this) && !questionDialog.isShown()) {
