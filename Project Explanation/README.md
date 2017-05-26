@@ -5,9 +5,10 @@
   - Kamontat Chantrachirathumrong 5810546552
     Duty : Database ,  Game algorithm , fully dressed use case , UML class diagram
   - Soraya Sanna 5810546056
-  Duty : Database ,  Game algorithm , fully dressed use case , UML class diagram
+    Duty : Database ,  Game algorithm , fully dressed use case , UML class diagram
   - Thanawan Sean-in 5810545891
     Duty : Main activity , Material UI , fully dressed use case , UML class diagram
+
 ---------------------------------------------------------------------------------------
 # Design Pattern
       We use Design Pattern
@@ -16,6 +17,7 @@
   - Strategy pattern —> All game algorithm
   - Singleton pattern —> Database, Question Dialog, Result Dialog
   - Builder -> Question, Resource, Dialog
+
 ----------------------------------------------------------------------------------------
 # Design Principle
       We create this game along with
@@ -30,4 +32,5 @@
   - Polymorphism Principle
   - Pure Fabrication Principle
   - Indirection Principle
+
 ----------------------------------------------------------------------------------------
