@@ -15,11 +15,19 @@ public class DefaultCityStrategy implements CityStrategy {
 	@Override
 	public CityLevel getCurrentLevel(GameLogic logic) {
 		long population = logic.getCurrentPopulation();
-		if (population > 1_000_000L) {
-			return CityLevel.LEVEL_5;
+		if (population > 100_000_000L) {
+			return CityLevel.LEVEL_9;
+		} else if (population > 10_000_000L) {
+			return CityLevel.LEVEL_8;
+		} else if (population > 2_500_000L) {
+			return CityLevel.LEVEL_7;
+		} else if (population > 1_000_000L) {
+			return CityLevel.LEVEL_6;
 		} else if (population > 100_000L) {
+			return CityLevel.LEVEL_5;
+		} else if (population > 70_000L) {
 			return CityLevel.LEVEL_4;
-		} else if (population > 75_000L) {
+		} else if (population > 50_000L) {
 			return CityLevel.LEVEL_3;
 		} else if (population > 10_000L) {
 			return CityLevel.LEVEL_2;
