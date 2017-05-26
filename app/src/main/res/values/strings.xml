@@ -19,4 +19,5 @@
     <string name="light_bulb_for_leader_1">light bulb for leader 1</string>
     <string name="light_bulb_for_leader_2">light bulb for leader 2</string>
     <string name="light_bulb_for_leader_3">light bulb for leader 3</string>
+    <string name="start_button">start button</string>
 </resources>
