@@ -1,5 +1,6 @@
 package com.softspec.finalproj.gameofearth.view;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -24,8 +25,11 @@ import com.softspec.finalproj.gameofearth.model.strategy.DefaultPopulationStrate
 
 import java.util.*;
 
+import static com.softspec.finalproj.gameofearth.view.LoadedProgressActivity.GAME_LOGIC;
+
 public class MainActivity extends FullScreenActivity implements Observer {
 	private static GameLogic logic;
+	private EndActivity endActivity;
 	private ImageView city;
 	private TextView currentPopTextView;
 	private TextView popTextView;
@@ -78,11 +82,22 @@ public class MainActivity extends FullScreenActivity implements Observer {
 	
 	@Override
 	public void update(Observable observable, Object o) {
+		update();
+		
+		if (observable instanceof ResultDialog && o instanceof Resource) {
+			Resource r = (Resource) o;
+			logic.update(r);
+		}
+		
 		if (observable instanceof GameLogic) {
 			if (logic.isGameOver()) {
-				Log.i(LogConstants.Action.NO_UPDATE, "Game Over");
+				Log.i(LogConstants.Action.UPDATE, "Game Over");
 				setCity(logic.getDefaultCity());
 				logic.stopGame();
+				// FIXME: 5/26/2017 AD no start end activity
+				Intent intent = new Intent(MainActivity.this, EndActivity.class);
+				intent.putExtra(GAME_LOGIC, logic);
+				startActivity(intent);
 			} else if (o instanceof String && o.toString().equals(GameLogic.SHOW_QUESTION)) {
 				if (!LightBulb.haveQuestionLight(this) && !questionDialog.isShown()) {
 					Log.i(LogConstants.Action.LIGHT, "Question");
@@ -94,13 +109,6 @@ public class MainActivity extends FullScreenActivity implements Observer {
 				setCity(logic.getCity());
 			}
 		}
-		
-		if (observable instanceof ResultDialog && o instanceof Resource) {
-			Resource r = (Resource) o;
-			logic.update(r);
-		}
-		
-		update();
 	}
 	
 	public void update() {

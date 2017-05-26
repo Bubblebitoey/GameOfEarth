@@ -36,33 +36,57 @@ public class CityLoader {
 				return loader.getCityLevel_4();
 			case LEVEL_5:
 				return loader.getCityLevel_5();
+			case LEVEL_6:
+				return loader.getCityLevel_6();
+			case LEVEL_7:
+				return loader.getCityLevel_7();
+			case LEVEL_8:
+				return loader.getCityLevel_8();
+			case LEVEL_9:
+				return loader.getCityLevel_9();
 			default:
 				return loader.getCityLevel_0();
 		}
 	}
 	
-	public Drawable getCityLevel_0() {
+	Drawable getCityLevel_0() {
 		return getDrawable(R.drawable.city);
 	}
 	
-	public Drawable getCityLevel_1() {
+	private Drawable getCityLevel_1() {
 		return getDrawable(R.drawable.city_1);
 	}
 	
-	public Drawable getCityLevel_2() {
+	private Drawable getCityLevel_2() {
 		return getDrawable(R.drawable.city_2);
 	}
 	
-	public Drawable getCityLevel_3() {
+	private Drawable getCityLevel_3() {
 		return getDrawable(R.drawable.city_3);
 	}
 	
-	public Drawable getCityLevel_4() {
+	private Drawable getCityLevel_4() {
 		return getDrawable(R.drawable.city_4);
 	}
 	
-	public Drawable getCityLevel_5() {
+	private Drawable getCityLevel_5() {
 		return getDrawable(R.drawable.city_5);
+	}
+	
+	private Drawable getCityLevel_6() {
+		return getDrawable(R.drawable.city_6);
+	}
+	
+	private Drawable getCityLevel_7() {
+		return getDrawable(R.drawable.city_7);
+	}
+	
+	private Drawable getCityLevel_8() {
+		return getDrawable(R.drawable.city_8);
+	}
+	
+	private Drawable getCityLevel_9() {
+		return getDrawable(R.drawable.city_9);
 	}
 	
 	private Drawable getDrawable(@DrawableRes int id) {

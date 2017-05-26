@@ -11,9 +11,11 @@ import java.util.*;
 
 public class LoadedProgressActivity extends FullScreenActivity implements Observer {
 	public static final String DATABASE_MANAGEMENT = "database_management";
+	public static final String GAME_LOGIC = "game_logic";
 	private AnimatedCircleLoadingView progressBar;
 	private DatabaseManagement management;
 	private StartActivity startActivity;
+	private MainActivity mainActivity;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +27,7 @@ public class LoadedProgressActivity extends FullScreenActivity implements Observ
 		progressBar.setAnimationListener(new AnimatedCircleLoadingView.AnimationListener() {
 			@Override
 			public void onAnimationEnd(boolean b) {
-				Intent intent = new Intent(LoadedProgressActivity.this, MainActivity.class);
+				Intent intent = new Intent(LoadedProgressActivity.this, StartActivity.class);
 				intent.putExtra(DATABASE_MANAGEMENT, management);
 				startActivity(intent);
 			}
@@ -42,8 +44,11 @@ public class LoadedProgressActivity extends FullScreenActivity implements Observ
 			Progress progress = (Progress) o;
 			if (progress.isComplete()) {
 				progressBar.stopOk();
+				startActivity(mainActivity.getIntent());
+				System.out.println("Is in if progress.isComplete()");
 			}
 		}
 		progressBar.stopOk();
+		System.out.println("Is not if progress.isComplete()");
 	}
 }

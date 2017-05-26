@@ -7,12 +7,12 @@ import android.view.View;
 import android.widget.ImageButton;
 import com.softspec.finalproj.gameofearth.R;
 
+import static com.softspec.finalproj.gameofearth.view.LoadedProgressActivity.DATABASE_MANAGEMENT;
+
 /**
  * Created by bubblebitoey on 5/26/2017 AD.
  */
-
-public class StartActivity extends FullScreenActivity{
-	
+public class StartActivity extends FullScreenActivity {
 	private ImageButton startBtn;
 	
 	@Override
@@ -25,6 +25,7 @@ public class StartActivity extends FullScreenActivity{
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(StartActivity.this, MainActivity.class);
+				intent.putExtra(DATABASE_MANAGEMENT, getIntent().getSerializableExtra(LoadedProgressActivity.DATABASE_MANAGEMENT));
 				startActivity(intent);
 			}
 		});

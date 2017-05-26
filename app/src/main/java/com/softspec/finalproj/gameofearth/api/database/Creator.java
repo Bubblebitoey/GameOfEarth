@@ -47,18 +47,18 @@ public class Creator {
 	}
 	
 	private void makeList() {
-		addQuestion("Toilet Paper", "Thieves are stealing our toilet paper in public toilets. Install facial recognition cameras so that each visitor can only take two pieces of toilet paper.", -150, 0, 100, 2);
-		addQuestion("Gluten Free Labeling", "Business are claiming their products are gluten-free when they are not. We should set clear standards for gluten-free labeling!", 0, 3, 0, -5);
-		addQuestion("Ecofriendly Standards", "Companies are not meeting the eco-friendly standards. Let them continue for a small annual fine?", 100, 2, -120, -1);
-		addQuestion("Indigenous Benefits", "We should compensate the indigenous inhabitants with extra social benefits so they can live in harmony.", 0, 3, 0, -5);
-		addQuestion("Cure the Cows", "Our cows are infected with a deadly disease! stop beef product until the cows are cured?", -100, 3, 150, -2);
-		addQuestion("Install Toll Stations", "A hurricane has destroyed all the routes entering the country except for one. Let's install toll stations on the remaining route entering the country instead of repairing all of them.", 30, -1, -20, 2);
-		addQuestion("Free Up Medical Funds", "Patients that are in vegetative state drains millions of our medical funds. Allow euthanasia and reduce such funds?", 12, 12, 12, 12);
-		addQuestion("Recycled Diapers", "Our hospitals are filling up with sick infants that have been using unclean recycled diapers. Close down this unethical factory?", 240, 2, 120, -7);
-		addQuestion("Keeping Oceans Blue", "With rising unkeep costs, the chemical waste treatment system is a burden. Allow factories to pour their waste into the ocean as long as they dye their waste blue!", 200, 4, 0, -2);
-		addQuestion("Expand airport", "Our airport has reached maimum capacity. let's build a new runway?", 300, 8, 0, -3);
-		addQuestion("Blackhole Disposal", "Let's create an artificial black hole to dispose of all our waste! It's going to be really really expensive, and vey very dangerous.", -100, -1, 90, 1);
-		addQuestion("New security fee", "Tight security at airport is discouraging tourists. Allow wealthy tourists to bypass security for a small fee?", 212, 1, -250, -2);
+		addQuestion("Toilet Paper", "Thieves are stealing our toilet paper in public toilets. Install facial recognition cameras so that each visitor can only take two pieces of toilet paper.", -500, 0, 200, 14);
+		addQuestion("Gluten Free Labeling", "Business are claiming their products are gluten-free when they are not. We should set clear standards for gluten-free labeling!", 0, 30, 0, -40);
+		addQuestion("Ecofriendly Standards", "Companies are not meeting the eco-friendly standards. Let them continue for a small annual fine?", 300, 12, -300, -15);
+		addQuestion("Indigenous Benefits", "We should compensate the indigenous inhabitants with extra social benefits so they can live in harmony.", 0, 8, 0, -9);
+		addQuestion("Cure the Cows", "Our cows are infected with a deadly disease! stop beef product until the cows are cured?", -800, 20, 1000, -18);
+		addQuestion("Install Toll Stations", "A hurricane has destroyed all the routes entering the country except for one. Let's install toll stations on the remaining route entering the country instead of repairing all of them.", 150, -10, -200, 20);
+		addQuestion("Free Up Medical Funds", "Patients that are in vegetative state drains millions of our medical funds. Allow euthanasia and reduce such funds?", 200, 38, 200, -40);
+		addQuestion("Recycled Diapers", "Our hospitals are filling up with sick infants that have been using unclean recycled diapers. Close down this unethical factory?", 520, 14, 380, -20);
+		addQuestion("Keeping Oceans Blue", "With rising unkeep costs, the chemical waste treatment system is a burden. Allow factories to pour their waste into the ocean as long as they dye their waste blue!", 432, 12, 0, -15);
+		addQuestion("Expand airport", "Our airport has reached maximum capacity. let's build a new runway?", 300, 28, 0, -20);
+		addQuestion("Blackhole Disposal", "Let's create an artificial black hole to dispose of all our waste! It's going to be really really expensive, and vey very dangerous.", -600, -10, 500, 10);
+		addQuestion("New security fee", "Tight security at airport is discouraging tourists. Allow wealthy tourists to bypass security for a small fee?", 422, 15, -582, -16);
 		addQuestion("Energy Production Cap", "Our energy companies are extracting more natural resources than we need. Put a production cap on how much they can extract every year?", -80, 0, 0, 100);
 		addQuestion("Tighten boarder security", "With increasing tourists, terrorists can easily slip into our country, we need jail any suspicious personal first before questioning!", -130, -2, 180, 1);
 		addQuestion("Give Worker Raise", "The oil workers are planning a strike due to low pay. Increase their salary subsidies?", 100, 0, -100, 0);
