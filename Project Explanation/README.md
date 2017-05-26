@@ -6,7 +6,7 @@
     Duty : Database ,  Game algorithm , fully dressed use case , UML class diagram
   - Soraya Sanna 5810546056
   Duty : Database ,  Game algorithm , fully dressed use case , UML class diagram
-  - Thanawan Sean-in
+  - Thanawan Sean-in 5810545891
     Duty : Main activity , Material UI , fully dressed use case , UML class diagram
 ---------------------------------------------------------------------------------------
 # Design Pattern
