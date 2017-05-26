@@ -163,7 +163,7 @@
             android:background="@android:color/transparent"/>
 
             <ImageButton
-                android:id="@+id/button2"
+                android:id="@+id/ppl1_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/light_bulb"
@@ -191,7 +191,7 @@
                 android:background="@android:color/transparent"/>
 
             <ImageButton
-                android:id="@+id/button3"
+                android:id="@+id/ppl2_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/light_bulb"
@@ -213,7 +213,7 @@
             android:background="@android:color/transparent"/>
 
             <ImageButton
-                android:id="@+id/button4"
+                android:id="@+id/ppl4_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/light_bulb"
