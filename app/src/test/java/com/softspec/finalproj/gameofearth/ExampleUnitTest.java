@@ -1,4 +1,4 @@
-package com.bubblebitoey.gameofearth;
+package com.softspec.finalproj.gameofearth;
 
 import org.junit.Test;
 

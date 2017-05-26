@@ -25,10 +25,8 @@ import com.softspec.finalproj.gameofearth.model.strategy.DefaultPopulationStrate
 
 import java.util.*;
 
-import static com.softspec.finalproj.gameofearth.view.LoadedProgressActivity.GAME_LOGIC;
-
 public class MainActivity extends FullScreenActivity implements Observer {
-	private static GameLogic logic;
+	public static GameLogic logic;
 	private EndActivity endActivity;
 	private ImageView city;
 	private TextView currentPopTextView;
@@ -91,16 +89,10 @@ public class MainActivity extends FullScreenActivity implements Observer {
 		
 		if (observable instanceof GameLogic) {
 			if (logic.isGameOver()) {
-				Log.i(LogConstants.Action.UPDATE, "Game Over");
 				setCity(logic.getDefaultCity());
-				Intent intent = new Intent(MainActivity.this, EndActivity.class);
-				intent.putExtra(GAME_LOGIC, logic);
-				startActivity(intent);
 				logic.stopGame();
-				// FIXME: 5/26/2017 AD no start end activity
-//				Intent intent = new Intent(MainActivity.this, EndActivity.class);
-//				intent.putExtra(GAME_LOGIC, logic);
-//				startActivity(intent);
+				Intent intent = new Intent(MainActivity.this, EndActivity.class);
+				startActivity(intent);
 			} else if (o instanceof String && o.toString().equals(GameLogic.SHOW_QUESTION)) {
 				if (!LightBulb.haveQuestionLight(this) && !questionDialog.isShown()) {
 					Log.i(LogConstants.Action.LIGHT, "Question");
