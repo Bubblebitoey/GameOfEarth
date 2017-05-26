@@ -31,7 +31,8 @@
                     android:layout_height="40dp"
                     android:layout_marginTop="20dp"
                     android:src="@drawable/pplbigbar"
-                    android:contentDescription="@string/current_population"/>
+                    android:contentDescription="@string/current_population"
+                android:background="@android:color/transparent"/>
 
             <TextView
                     android:id="@+id/current_population_text"
@@ -58,7 +59,8 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginStart="30dp"
                     android:src="@drawable/calendarbar"
-                    android:contentDescription="@string/calender"/>
+                    android:contentDescription="@string/calender"
+                android:background="@android:color/transparent"/>
 
             <TextView
                     android:id="@+id/calendar_text"
@@ -90,7 +92,8 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="0dp"
                     android:src="@drawable/cabonbar"
-                    android:contentDescription="@string/carbon_information"/>
+                    android:contentDescription="@string/carbon_information"
+                android:background="@android:color/transparent"/>
 
             <TextView
                     android:id="@+id/carbon_text"
@@ -114,7 +117,8 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="0dp"
                     android:src="@drawable/pplbar"
-                    android:contentDescription="@string/population_information"/>
+                    android:contentDescription="@string/population_information"
+                android:background="@android:color/transparent"/>
 
             <TextView
                     android:id="@+id/population_text"
@@ -135,7 +139,7 @@
             android:layout_height="300dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-
+        android:background="@android:color/transparent"
             android:src="@drawable/city"
             android:contentDescription="@string/city_image"/>
 
@@ -155,13 +159,15 @@
                 android:layout_marginLeft="100dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="0dp"
-                android:src="@drawable/leader_2"/>
+                android:src="@drawable/leader_2"
+            android:background="@android:color/transparent"/>
 
             <ImageButton
                 android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/light_bulb"
+                android:background="@android:color/transparent"
                 />
 
 
@@ -181,13 +187,15 @@
                 android:paddingLeft="15dp"
                 android:paddingRight="0dp"
                 android:paddingStart="15dp"
-                android:paddingEnd="0dp"/>
+                android:paddingEnd="0dp"
+                android:background="@android:color/transparent"/>
 
             <ImageButton
                 android:id="@+id/button3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/light_bulb" />
+                android:src="@drawable/light_bulb"
+                android:background="@android:color/transparent"/>
 
         </FrameLayout>
 
@@ -201,13 +209,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:src="@drawable/leader_3"/>
+                android:src="@drawable/leader_3"
+            android:background="@android:color/transparent"/>
 
             <ImageButton
                 android:id="@+id/button4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/light_bulb" />
+                android:src="@drawable/light_bulb"
+                android:background="@android:color/transparent"/>
 
         </FrameLayout>
 
